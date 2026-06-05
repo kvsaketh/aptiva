@@ -200,7 +200,7 @@ export default function MegaMenu() {
         <div className="container-xl flex h-[80px] items-center justify-between">
           {/* Logo */}
           <a href="#/" className="group flex items-center" aria-label="Aptiva home">
-            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04] md:h-14" />
+            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-[1.848rem] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04] md:h-[2.156rem]" />
           </a>
 
           {/* Desktop Nav */}
@@ -226,8 +226,8 @@ export default function MegaMenu() {
           </div>
 
           {/* CTA */}
-          <div className="hidden lg:block">
-            <a href="#/contact" className="btn-primary !px-6 !py-3 text-[11.5px]">
+          <div className="hidden shrink-0 lg:block">
+            <a href="#/contact" className="btn-primary !px-6 !py-3 text-[11.5px] whitespace-nowrap">
               <span>Get in touch</span>
             </a>
           </div>
@@ -304,7 +304,7 @@ export default function MegaMenu() {
       {mobileOpen && (
         <div className="surface-ink-raised fixed inset-0 z-[60] overflow-y-auto pt-6">
           <div className="flex items-center justify-between px-6 pb-4">
-            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-12 w-auto" />
+            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-[2.31rem] w-auto" />
             <button className="p-2 text-white" onClick={() => setMobileOpen(false)} aria-label="Close menu">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>

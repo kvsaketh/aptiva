@@ -42,6 +42,7 @@ const offices = [
 ]
 
 const moreOffices = [
+  { city: 'New Cairo', country: 'Egypt', address: 'Aptivamena Tech · District 5, Mindhouse Campus G05 - B01 - M05 · Kilo 9 Ain Sokhna Road, New Cairo' },
   { city: 'Nairobi', country: 'Kenya', address: 'Purshottam Place, Westlands, P.O. Box 46728, Nairobi' },
   { city: 'Muscat', country: 'Oman', address: '#0400Z107, Building 4, Knowledge Oasis Muscat, P.O. Box 1367' },
 ]
@@ -91,7 +92,7 @@ export default function Contact() {
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Contact' }]}
         stats={[
           { value: '< 1 day', label: 'Response time' },
-          { value: '6', label: 'Regional offices' },
+          { value: '7', label: 'Regional offices' },
           { value: '16', label: 'Countries served' },
           { value: '24×7', label: 'Managed support' },
         ]}
@@ -302,7 +303,7 @@ function Offices() {
           eyebrow="Find us in the region"
           counter="02 / 03"
           title={<>Local teams, <span className="text-gradient-brand">on the ground.</span></>}
-          intro="Six offices across the Middle East and Africa mean same-time-zone collaboration, regional compliance fluency and people you can meet in person."
+          intro="Seven offices across the Middle East and Africa mean same-time-zone collaboration, regional compliance fluency and people you can meet in person."
         />
 
         <Reveal stagger=".office-card" className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -314,7 +315,7 @@ function Offices() {
               <div className="relative z-10 p-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-red">{o.tag}</span>
                 <h3 className="mt-2 font-display text-xl font-semibold text-white">{o.city}</h3>
-                <div className="mt-3 max-h-0 overflow-hidden text-[12.5px] leading-relaxed text-white/0 transition-all duration-500 group-hover:max-h-40 group-hover:text-white/70">
+                <div className="mt-3 space-y-0.5 text-[12.5px] leading-relaxed text-white/70">
                   {o.lines.map((l) => <p key={l}>{l}</p>)}
                 </div>
               </div>
@@ -322,7 +323,7 @@ function Offices() {
           ))}
         </Reveal>
 
-        <Reveal stagger=".more-office" className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <Reveal stagger=".more-office" className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {moreOffices.map((o) => (
             <div key={o.city} className="more-office card-ink flex items-start gap-4 p-6">
               <span className="icon-tile mt-0.5 h-10 w-10 shrink-0"><IconGlobe className="h-5 w-5 text-white/85" /></span>

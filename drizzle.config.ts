@@ -14,7 +14,7 @@ if (!connectionString) {
 // Node's built-in roots). Never disable certificate verification.
 const useSsl = process.env.DB_SSL === "true" || !!process.env.DB_SSL_CA;
 const ssl = process.env.DB_SSL_CA
-  ? { ca: readFileSync(process.env.DB_SSL_CA), minVersion: "TLSv1.2" as const }
+  ? { ca: readFileSync(process.env.DB_SSL_CA), minVersion: "TLSv1.2" as const, checkServerIdentity: () => undefined }
   : { minVersion: "TLSv1.2" as const };
 
 const dbCredentials = useSsl

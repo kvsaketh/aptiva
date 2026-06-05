@@ -92,7 +92,7 @@ export default function Footer() {
       {/* Main */}
       <div className="container-xl py-16 md:py-20">
         <div className="mb-14 flex flex-col gap-6 border-b border-white/10 pb-10 md:flex-row md:items-center md:justify-between">
-          <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-16 w-auto object-contain" />
+          <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-[3.08rem] w-auto object-contain" />
           <p className="font-mono text-[12px] uppercase tracking-[0.14em] text-white/45">
             IT Services · Digital Transformation · Enterprise AI
           </p>

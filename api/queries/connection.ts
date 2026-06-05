@@ -16,7 +16,12 @@ let instance: ReturnType<typeof drizzle<typeof fullSchema>>;
  * verify against Node's built-in roots. We never disable verification.
  */
 function sslOptions() {
-  if (env.dbSslCa) return { ca: readFileSync(env.dbSslCa), minVersion: "TLSv1.2" as const };
+  if (env.dbSslCa) {
+    // Pin the provider CA (chain IS verified). Hostname check is skipped because
+    // we connect by private-VCN IP and OCI MySQL's auto-generated server cert has
+    // no IP SAN — a MITM would still need a cert signed by this exact pinned CA.
+    return { ca: readFileSync(env.dbSslCa), minVersion: "TLSv1.2" as const, checkServerIdentity: () => undefined };
+  }
   if (env.dbSsl) return { minVersion: "TLSv1.2" as const };
   return undefined;
 }

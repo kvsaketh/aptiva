@@ -58,10 +58,17 @@ const regions = [
   { icon: IconAntenna, name: 'North & West Africa', detail: 'Egypt and beyond — telecom, content intelligence and citizen-facing platforms.' },
 ]
 
+const LINKEDIN_PATH = 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'
+
+function peekInitials(name: string) {
+  const parts = name.replace(/\(.*?\)/g, '').trim().split(/\s+/)
+  return ((parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '')).toUpperCase()
+}
+
 const leadershipPeek = [
-  { name: 'Swamy VLN Boyapati', role: 'Executive Director & CEO', img: '/portrait-swamy.jpg' },
-  { name: 'Bader Maktabi', role: 'Director, Middle East Operations', img: '/portrait-bader.jpg' },
-  { name: 'George Avvaru', role: 'VP, Delivery & Operations', img: '/portrait-george.jpg' },
+  { name: 'Swamy VLN Boyapati', role: 'Managing Director & CEO', linkedin: 'https://www.linkedin.com/in/swamyvlnboyapati/', glow: 'red' as const },
+  { name: 'George Avvaru', role: 'Vice President, Delivery & Operations', linkedin: 'https://www.linkedin.com/in/georgeavvaru/', glow: 'blue' as const },
+  { name: 'Bader Maktabi', role: 'Director, Middle East Operations', linkedin: 'https://www.linkedin.com/in/bader-maktabi-bb49914b/', glow: 'red' as const },
 ]
 
 /* ────────────── PAGE ────────────── */
@@ -426,13 +433,18 @@ function LeadershipTeaser() {
 
         <Reveal stagger=".peek-card" className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-3">
           {leadershipPeek.map((p) => (
-            <a key={p.name} href="#/leadership" className="peek-card group relative block min-h-[320px] overflow-hidden border border-white/10">
-              <div className="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${p.img})` }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="font-display text-lg font-semibold text-white">{p.name}</h3>
-                <p className="mt-1 text-[12.5px] font-medium text-brand-red">{p.role}</p>
+            <a key={p.name} href={p.linkedin} target="_blank" rel="noopener noreferrer" className="peek-card card-ink group flex flex-col p-7">
+              <div className="mb-5 flex items-center justify-between">
+                <span className={`flex h-14 w-14 items-center justify-center font-display text-base font-semibold text-white ${p.glow === 'blue' ? 'bg-grad-blue' : 'bg-grad-red'}`}>
+                  {peekInitials(p.name)}
+                </span>
+                <svg className="h-5 w-5 text-white/30 transition-colors group-hover:text-white" viewBox="0 0 24 24" fill="currentColor"><path d={LINKEDIN_PATH} /></svg>
               </div>
+              <h3 className="font-display text-lg font-semibold text-white">{p.name}</h3>
+              <p className={`mt-1 text-[12.5px] font-semibold ${p.glow === 'blue' ? 'text-brand-blue' : 'text-brand-red'}`}>{p.role}</p>
+              <span className="mt-5 inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/45 transition-colors group-hover:text-white">
+                View profile <IconArrowUpRight className="h-3.5 w-3.5 text-brand-red" />
+              </span>
             </a>
           ))}
         </Reveal>

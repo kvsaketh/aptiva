@@ -13,57 +13,39 @@ import {
 } from '../components/Icons'
 
 /* ────────────── DATA ────────────── */
-/* Real leaders + their /portrait-*.jpg images and titles are preserved.
-   Additional executives use the remaining portrait assets with credible bios. */
+/* Real leadership — names, titles and LinkedIn profiles per aptivatechnologies.com. */
+
+const LINKEDIN_PATH = 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'
+
+function initials(name: string) {
+  const parts = name.replace(/\(.*?\)/g, '').trim().split(/\s+/)
+  return ((parts[0]?.[0] ?? '') + (parts[parts.length - 1]?.[0] ?? '')).toUpperCase()
+}
 
 const team = [
   {
     name: 'Swamy VLN Boyapati',
-    role: 'Executive Director & CEO',
+    role: 'Managing Director & CEO',
     region: 'Global Direction',
-    img: '/portrait-swamy.jpg',
     glow: 'red' as const,
-    bio: 'Swamy is the Executive Director and CEO of Aptiva, leading global operations and driving growth strategy with a focus on digital transformation, automation and enterprise innovation. With a proven track record of scaling teams and streamlining complex operations, he excels at turning strategy into execution and ideas into impact. He is passionate about building high-performance cultures, mentoring leaders and delivering measurable business outcomes.',
+    linkedin: 'https://www.linkedin.com/in/swamyvlnboyapati/',
+    bio: 'Leads Aptiva’s global operations and growth strategy, with a focus on digital transformation, automation and enterprise innovation — turning strategy into execution and building high-performance cultures.',
+  },
+  {
+    name: 'George Avvaru',
+    role: 'Vice President, Delivery & Operations',
+    region: 'Execution Excellence',
+    glow: 'blue' as const,
+    linkedin: 'https://www.linkedin.com/in/georgeavvaru/',
+    bio: 'Owns global delivery and operations with a relentless focus on quality, timeliness and client satisfaction — building frameworks that scale across geographies and technology domains.',
   },
   {
     name: 'Bader Maktabi',
     role: 'Director, Middle East Operations',
     region: 'Middle East & Africa',
-    img: '/portrait-bader.jpg',
-    glow: 'blue' as const,
-    bio: 'Bader leads Middle East and Africa operations with deep regional expertise. He has built lasting client relationships across UAE, KSA, Kenya and Egypt, driving operational excellence and market expansion in the region’s most demanding, regulated sectors.',
-  },
-  {
-    name: 'George Avvaru',
-    role: 'VP, Delivery & Operations',
-    region: 'Execution Excellence',
-    img: '/portrait-george.jpg',
     glow: 'red' as const,
-    bio: 'George oversees global delivery operations with a relentless focus on quality, timeliness and client satisfaction. He has built robust delivery frameworks that scale across geographies and technology domains, from content intelligence to cloud and AI.',
-  },
-  {
-    name: 'Venu Gopal',
-    role: 'VP, AI & Intelligent Automation',
-    region: 'Agentic AI & GenAI',
-    img: '/portrait-venu.jpg',
-    glow: 'blue' as const,
-    bio: 'Venu leads Aptiva’s Agentic AI and intelligent-automation practice, taking custom LLMs, RAG architectures and autonomous agents from prototype into governed production. He partners with banking, telecom and government clients to embed AI into regulated workflows — measured in cycle-time, accuracy and auditable outcomes.',
-  },
-  {
-    name: 'John Mathews',
-    role: 'VP, Cloud & Cybersecurity',
-    region: 'Platform & Trust',
-    img: '/portrait-john.jpg',
-    glow: 'red' as const,
-    bio: 'John heads cloud, infrastructure and cybersecurity, architecting zero-trust, multi-cloud platforms for clients where resilience and compliance are non-negotiable. He brings deep DevSecOps and SRE discipline to mission-critical systems across financial services and energy.',
-  },
-  {
-    name: 'Arun Prakash',
-    role: 'VP, Data & Engineering',
-    region: 'Data & Analytics',
-    img: '/portrait-arun.jpg',
-    glow: 'blue' as const,
-    bio: 'Arun leads data engineering and analytics, building the governed data foundations and ML pipelines that turn enterprise data into decisions. His teams deliver BI, data platforms and the trustworthy data backbone that Aptiva’s AI capabilities depend on.',
+    linkedin: 'https://www.linkedin.com/in/bader-maktabi-bb49914b/',
+    bio: 'Leads Middle East operations with deep regional expertise, building lasting client relationships and driving market expansion across the region’s most demanding, regulated sectors.',
   },
 ]
 
@@ -133,21 +115,21 @@ function ExecutiveTeam() {
 
         <Reveal stagger=".lead-card" className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (
-            <TiltCard key={m.name} glow={m.glow} className="lead-card card-ink flex flex-col overflow-hidden p-0">
-              <div className="relative h-72 overflow-hidden">
-                <div className="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${m.img})` }} />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/35 to-transparent" />
-                <div className={`absolute inset-0 opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-30 ${m.glow === 'blue' ? 'bg-grad-blue' : 'bg-grad-brand'}`} />
-                <span className="absolute left-5 top-5 font-mono text-[10px] uppercase tracking-[0.16em] text-white/60">{m.region}</span>
-              </div>
-              <div className="flex flex-1 flex-col p-7">
-                <h3 className="font-display text-xl font-semibold text-white">{m.name}</h3>
-                <p className={`mt-1 text-[13px] font-semibold ${m.glow === 'blue' ? 'text-brand-blue' : 'text-brand-red'}`}>{m.role}</p>
-                <p className="mt-4 max-h-0 flex-1 overflow-hidden text-[13.5px] leading-relaxed text-white/0 transition-all duration-500 group-hover:max-h-72 group-hover:text-white/65">{m.bio}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.1em] text-white/70 transition-all group-hover:gap-3 group-hover:text-white">
-                  Connect <IconArrowUpRight className="h-4 w-4 text-brand-red" />
+            <TiltCard key={m.name} glow={m.glow} className="lead-card card-ink flex flex-col p-8">
+              <div className="mb-6 flex items-center justify-between">
+                <span className={`flex h-14 w-14 items-center justify-center font-display text-lg font-semibold text-white ${m.glow === 'blue' ? 'bg-grad-blue' : 'bg-grad-red'}`}>
+                  {initials(m.name)}
                 </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/40">{m.region}</span>
               </div>
+              <h3 className="font-display text-2xl font-semibold text-white">{m.name}</h3>
+              <p className={`mt-1.5 text-[13.5px] font-semibold ${m.glow === 'blue' ? 'text-brand-blue' : 'text-brand-red'}`}>{m.role}</p>
+              <p className="mt-4 flex-1 text-[14px] leading-relaxed text-white/55">{m.bio}</p>
+              <a href={m.linkedin} target="_blank" rel="noopener noreferrer"
+                className="mt-6 inline-flex w-fit items-center gap-2 border border-white/12 bg-white/[0.03] px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white/75 transition-all hover:border-transparent hover:bg-grad-brand hover:text-white">
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d={LINKEDIN_PATH} /></svg>
+                Connect on LinkedIn
+              </a>
             </TiltCard>
           ))}
         </Reveal>
