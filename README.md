@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# Aptiva Technologies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site + admin console for **Aptiva Technologies** — a full-stack IT,
+agentic-AI, automation and digital-transformation partner for the Middle East & Africa.
 
-Currently, two official plugins are available:
+## Stack
+- **Frontend:** React 19 + TypeScript, Vite 7, Tailwind v3 + shadcn/ui, GSAP + Lenis
+  (scroll/motion), three.js (interactive hero), React Router 7 (hash routing).
+- **Backend:** Hono + tRPC (one Node process serves the SPA **and** `/api`),
+  Drizzle ORM + MySQL, Firebase Auth (token verified server-side with `jose`).
+- **Build:** `vite build` (SPA → `dist/public`) + `esbuild` bundles the server → `dist/boot.js`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Design system
+Clash Display / Satoshi / JetBrains Mono. Two distinct brand gradients — **red**
+(rose→crimson) and **blue** (sky→indigo-violet). Reusable kit in
+`src/components/kit/` (KineticBackdrop, TiltCard, Counter, StatBand, Marquee,
+CTASection) + `src/components/motion/`. See `src/components/kit/AUTHORING_GUIDE.md`.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Develop
+```bash
+npm install
+cp .env.example .env     # fill DATABASE_URL + VITE_FIREBASE_* (see deploy/FIREBASE.md)
+npm run dev              # http://localhost:3000 (or: npm run dev -- --port 3004)
 ```
+The public site renders without any DB/auth config (static fallbacks). `/login`
+and `/admin` need Firebase + MySQL.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
+| | |
+|---|---|
+| `npm run dev` | Vite dev server (SPA + API via Hono dev middleware) |
+| `npm run build` | Production build (`dist/public` + `dist/boot.js`) |
+| `npm run start` | Run the production server (`NODE_ENV=production node dist/boot.js`) |
+| `npm run check` | TypeScript typecheck |
+| `npm run db:push` | Apply the Drizzle schema to MySQL |
+| `node scripts/fetch-logos.mjs` | Refresh client/partner logos in `public/logos/` |
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Auth (Firebase)
+Email/password + Google sign-in. The client attaches the Firebase ID token as a
+`Bearer` header; the backend (`api/auth/firebase.ts`) verifies it against Google's
+public keys using `FIREBASE_PROJECT_ID` (no service-account secret). Admin access
+is granted to emails in `OWNER_EMAIL`. Full setup: **`deploy/FIREBASE.md`**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Deploy
+Target: **Oracle Cloud Always Free** VM + self-hosted MySQL. Step-by-step runbook
+and config (Nginx, PM2, setup/deploy scripts) live in **`deploy/ORACLE_CLOUD.md`**.
+Production env template: `.env.production.example`.
