@@ -1,0 +1,302 @@
+{
+  "etisalat": {
+    "name": "Etisalat (e&)",
+    "file": "/logos/etisalat.png",
+    "domain": "eand.com"
+  },
+  "fab": {
+    "name": "First Abu Dhabi Bank",
+    "file": "/logos/fab.png",
+    "domain": "bankfab.com"
+  },
+  "det": {
+    "name": "Dubai Economy & Tourism",
+    "file": "/logos/det.png",
+    "domain": "visitdubai.com"
+  },
+  "aldar": {
+    "name": "Aldar Properties",
+    "file": "/logos/aldar.png",
+    "domain": "aldar.com"
+  },
+  "enec": {
+    "name": "Emirates Nuclear Energy",
+    "file": null,
+    "domain": "enec.gov.ae"
+  },
+  "etihad-rail": {
+    "name": "Etihad Rail",
+    "file": "/logos/etihad-rail.png",
+    "domain": "etihadrail.ae"
+  },
+  "daman": {
+    "name": "Daman Health",
+    "file": "/logos/daman.png",
+    "domain": "damanhealth.ae"
+  },
+  "mashreq": {
+    "name": "Mashreq Bank",
+    "file": "/logos/mashreq.png",
+    "domain": "mashreq.com"
+  },
+  "rakbank": {
+    "name": "RAKBANK",
+    "file": "/logos/rakbank.png",
+    "domain": "rakbank.ae"
+  },
+  "nbf": {
+    "name": "National Bank of Fujairah",
+    "file": "/logos/nbf.png",
+    "domain": "nbf.ae"
+  },
+  "oab": {
+    "name": "Oman Arab Bank",
+    "file": null,
+    "domain": "oman-arabbank.com"
+  },
+  "im-bank": {
+    "name": "I&M Bank",
+    "file": "/logos/im-bank.png",
+    "domain": "imbankgroup.com"
+  },
+  "dtb": {
+    "name": "Diamond Trust Bank",
+    "file": "/logos/dtb.png",
+    "domain": "dtbafrica.com"
+  },
+  "dahabshiil": {
+    "name": "Dahabshiil Bank",
+    "file": null,
+    "domain": "dahabshiilbank.com"
+  },
+  "fcb": {
+    "name": "First Capital Bank",
+    "file": "/logos/fcb.png",
+    "domain": "firstcapitalbank.co.mw"
+  },
+  "nmb": {
+    "name": "NMB Bank",
+    "file": null,
+    "domain": "nmbtz.com"
+  },
+  "samana": {
+    "name": "SAMANA Developers",
+    "file": "/logos/samana.png",
+    "domain": "samanadevelopers.com"
+  },
+  "damac": {
+    "name": "DAMAC",
+    "file": "/logos/damac.png",
+    "domain": "damacproperties.com"
+  },
+  "ellington": {
+    "name": "Ellington Properties",
+    "file": "/logos/ellington.png",
+    "domain": "ellingtonproperties.ae"
+  },
+  "mof": {
+    "name": "UAE Ministry of Finance",
+    "file": "/logos/mof.png",
+    "domain": "mof.gov.ae"
+  },
+  "ajman-ded": {
+    "name": "Ajman DED",
+    "file": null,
+    "domain": "ajmanded.gov.ae"
+  },
+  "ead": {
+    "name": "Environment Agency Abu Dhabi",
+    "file": "/logos/ead.png",
+    "domain": "ead.gov.ae"
+  },
+  "dell": {
+    "name": "Dell Technologies",
+    "file": "/logos/dell.svg",
+    "domain": "dell.com"
+  },
+  "moro": {
+    "name": "MORO HUB",
+    "file": null,
+    "domain": "morohub.com"
+  },
+  "liquid": {
+    "name": "Liquid Intelligent Tech",
+    "file": "/logos/liquid.png",
+    "domain": "liquid.tech"
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "file": "/logos/microsoft.png",
+    "domain": "microsoft.com"
+  },
+  "aws": {
+    "name": "AWS",
+    "file": "/logos/aws.png",
+    "domain": "aws.amazon.com"
+  },
+  "google-cloud": {
+    "name": "Google Cloud",
+    "file": "/logos/google-cloud.svg",
+    "domain": "cloud.google.com"
+  },
+  "oracle": {
+    "name": "Oracle",
+    "file": "/logos/oracle.png",
+    "domain": "oracle.com"
+  },
+  "ibm": {
+    "name": "IBM",
+    "file": "/logos/ibm.png",
+    "domain": "ibm.com"
+  },
+  "opentext": {
+    "name": "OpenText",
+    "file": "/logos/opentext.png",
+    "domain": "opentext.com"
+  },
+  "uipath": {
+    "name": "UiPath",
+    "file": "/logos/uipath.svg",
+    "domain": "uipath.com"
+  },
+  "cisco": {
+    "name": "Cisco",
+    "file": "/logos/cisco.svg",
+    "domain": "cisco.com"
+  },
+  "crowdstrike": {
+    "name": "CrowdStrike",
+    "file": "/logos/crowdstrike.png",
+    "domain": "crowdstrike.com"
+  },
+  "tenable": {
+    "name": "Tenable",
+    "file": "/logos/tenable.png",
+    "domain": "tenable.com"
+  },
+  "trendmicro": {
+    "name": "Trend Micro",
+    "file": "/logos/trendmicro.svg",
+    "domain": "trendmicro.com"
+  },
+  "grafana": {
+    "name": "Grafana",
+    "file": "/logos/grafana.svg",
+    "domain": "grafana.com"
+  },
+  "tricentis": {
+    "name": "Tricentis",
+    "file": "/logos/tricentis.png",
+    "domain": "tricentis.com"
+  },
+  "nintex": {
+    "name": "Nintex",
+    "file": "/logos/nintex.png",
+    "domain": "nintex.com"
+  },
+  "automationanywhere": {
+    "name": "Automation Anywhere",
+    "file": "/logos/automationanywhere.png",
+    "domain": "automationanywhere.com"
+  },
+  "accenture": {
+    "name": "Accenture",
+    "file": null,
+    "domain": "accenture.com"
+  },
+  "infosys": {
+    "name": "Infosys",
+    "file": "/logos/infosys.svg",
+    "domain": "infosys.com"
+  },
+  "quest": {
+    "name": "Quest",
+    "file": "/logos/quest.png",
+    "domain": "quest.com"
+  },
+  "forescout": {
+    "name": "Forescout",
+    "file": "/logos/forescout.png",
+    "domain": "forescout.com"
+  },
+  "secureworks": {
+    "name": "Secureworks",
+    "file": "/logos/secureworks.png",
+    "domain": "secureworks.com"
+  },
+  "mirantis": {
+    "name": "Mirantis",
+    "file": "/logos/mirantis.png",
+    "domain": "mirantis.com"
+  },
+  "ingrammicro": {
+    "name": "Ingram Micro",
+    "file": "/logos/ingrammicro.png",
+    "domain": "ingrammicro.com"
+  },
+  "g42": {
+    "name": "G42",
+    "file": "/logos/g42.png",
+    "domain": "g42.ai"
+  },
+  "varicent": {
+    "name": "Varicent",
+    "file": "/logos/varicent.png",
+    "domain": "varicent.com"
+  },
+  "microfocus": {
+    "name": "OpenText (Micro Focus)",
+    "file": "/logos/microfocus.png",
+    "domain": "microfocus.com"
+  },
+  "nuix": {
+    "name": "Nuix",
+    "file": "/logos/nuix.png",
+    "domain": "nuix.com"
+  },
+  "jedox": {
+    "name": "Jedox",
+    "file": "/logos/jedox.png",
+    "domain": "jedox.com"
+  },
+  "appdynamics": {
+    "name": "AppDynamics",
+    "file": null,
+    "domain": "appdynamics.com"
+  },
+  "ascertia": {
+    "name": "Ascertia",
+    "file": "/logos/ascertia.png",
+    "domain": "ascertia.com"
+  },
+  "spitch": {
+    "name": "Spitch",
+    "file": "/logos/spitch.png",
+    "domain": "spitch.ai"
+  },
+  "unifyapps": {
+    "name": "UnifyApps",
+    "file": "/logos/unifyapps.png",
+    "domain": "unifyapps.com"
+  },
+  "orbus": {
+    "name": "Orbus Software",
+    "file": "/logos/orbus.png",
+    "domain": "orbussoftware.com"
+  },
+  "eccentex": {
+    "name": "Eccentex",
+    "file": "/logos/eccentex.png",
+    "domain": "eccentex.com"
+  },
+  "tungsten": {
+    "name": "Tungsten Automation",
+    "file": "/logos/tungsten.png",
+    "domain": "tungstenautomation.com"
+  },
+  "bureauveritas": {
+    "name": "Bureau Veritas",
+    "file": "/logos/bureauveritas.png",
+    "domain": "bureauveritas.com"
+  }
+}
