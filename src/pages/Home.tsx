@@ -75,7 +75,7 @@ const whyItems = [
   { icon: IconShield, title: 'Full-Stack IT Partner', desc: 'Content, security, cloud and AI under one accountable relationship — no finger-pointing across vendors.' },
   { icon: IconAward, title: 'Regulated-Industry DNA', desc: 'Deep, audited expertise across banking, government, telecom and energy where compliance is non-negotiable.' },
   { icon: IconBrain, title: 'GenAI & Agentic First-Mover', desc: 'LLMs, agentic workflows and custom AI delivered in production — not slideware — at enterprise scale.' },
-  { icon: IconGlobe, title: 'ME + Africa Dual-Market', desc: 'Two decades of on-the-ground regional expertise spanning 16 countries and two continents.' },
+  { icon: IconGlobe, title: 'Global Multi-Market', desc: 'On-the-ground expertise since 2017 spanning 7 global locations worldwide.' },
   { icon: IconLayers, title: '11-Strong Solution Portfolio', desc: 'Proprietary IP that creates switching cost, accelerates delivery and drives recurring revenue.' },
 ]
 
@@ -125,7 +125,7 @@ function PositioningBand() {
           <span className="pb-item eyebrow-red">Who we are</span>
           <p className="pb-item mt-7 max-w-5xl font-display text-[clamp(24px,3.4vw,46px)] font-medium leading-[1.18] tracking-[-0.02em] text-white text-balance">
             Aptiva is the <span className="text-gradient-brand">full-stack technology partner</span> for the institutions
-            that move the Middle East and Africa forward — pairing two decades of regulated-industry delivery with
+            that move the world forward — pairing regulated-industry delivery since 2017 with
             a first-mover edge in GenAI and agentic automation.
           </p>
           <div className="pb-item mt-10 flex flex-wrap gap-4">

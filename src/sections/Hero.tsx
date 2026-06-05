@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const ROTATING = ['future.', 'intelligence.', 'advantage.', 'momentum.']
 const TICKER = [
   'Agentic workflows in production', 'GenAI at enterprise scale', 'Zero-trust by design',
-  '16 countries · ME × Africa', '1,200+ engineers', '11 proprietary platforms', 'Automation that compounds',
+  '7 global locations worldwide', '50+ enterprise clients', '11 proprietary platforms', 'Automation that compounds',
 ]
 
 /**
@@ -234,9 +234,9 @@ export default function Hero() {
           </h1>
 
           <p className="hero-sub lead mt-8 max-w-xl text-white/65">
-            We design, build and run the intelligent systems that move the region forward —
+            We design, build and run the intelligent systems that move the world forward —
             uniting agentic AI, automation, cloud and cybersecurity into one accountable partnership
-            for the Middle East &amp; Africa.
+            for the global enterprise.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -246,9 +246,9 @@ export default function Hero() {
 
           <div className="mt-16 grid max-w-2xl grid-cols-2 gap-px border border-white/10 bg-white/[0.04] sm:grid-cols-4">
             {[
-              { v: '20+', l: 'Years' },
-              { v: '16', l: 'Countries' },
-              { v: '1,200+', l: 'Engineers' },
+              { v: '2017', l: 'Founded' },
+              { v: '7', l: 'Locations' },
+              { v: '50+', l: 'Clients' },
               { v: '11', l: 'Platforms' },
             ].map((m) => (
               <div key={m.l} className="hero-metric bg-ink-900/55 px-5 py-5 backdrop-blur-sm">

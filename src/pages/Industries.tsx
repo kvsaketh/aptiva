@@ -120,8 +120,8 @@ const regulators = [
 
 const proofStats = [
   { to: 50, suffix: '+', label: 'Enterprise clients across regulated sectors' },
-  { to: 16, label: 'Countries served across the Middle East & Africa' },
-  { to: 20, suffix: ' yrs', label: 'Of audited regulated-industry delivery' },
+  { to: 7, label: 'Global locations worldwide' },
+  { to: 45, suffix: '', label: 'Strategic OEM partnerships' },
   { to: 99.95, decimals: 2, suffix: '%', label: 'Uptime on mission-critical platforms' },
 ]
 
@@ -139,7 +139,7 @@ const dna = [
   {
     no: '03',
     title: 'Region-native by default',
-    desc: 'Arabic-first interfaces, data sovereignty, local hosting and integrations with UAE Pass and national rails are baked in across two continents.',
+    desc: 'Arabic-first interfaces, data sovereignty, local hosting and integrations with UAE Pass and national rails are baked in across global markets.',
   },
   {
     no: '04',
@@ -162,13 +162,13 @@ export default function Industries() {
       <PageHeader
         label="INDUSTRIES"
         title="Domain depth where stakes are highest"
-        subtitle="Two decades inside the region’s most regulated, mission-critical sectors — pairing audited delivery with a first-mover edge in Agentic AI, automation and digital transformation."
+        subtitle="Inside the world’s most regulated, mission-critical sectors since 2017 — pairing audited delivery with a first-mover edge in Agentic AI, automation and digital transformation."
         bgImage="/industry-banking.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Industries' }]}
         stats={[
           { value: '6', label: 'Core sectors' },
           { value: '50+', label: 'Enterprise clients' },
-          { value: '16', label: 'Countries' },
+          { value: '7', label: 'Global locations' },
           { value: '11', label: 'Proprietary platforms' },
         ]}
       />
@@ -213,7 +213,7 @@ function RegulatedDNA() {
                 We don’t adapt to regulation. <span className="text-gradient-brand">We’re built around it.</span>
               </h2>
               <p className="dna-head lead mt-6 max-w-xl text-white/60">
-                Aptiva exists for the institutions that move the Middle East and Africa forward — banks,
+                Aptiva exists for the institutions that move the world forward — banks,
                 ministries, operators, utilities and insurers where downtime, breaches and non-compliance
                 are not options. We bring the workflows, controls and regional context that make enterprise
                 technology survive an audit and scale in production.
@@ -347,7 +347,7 @@ function Proof() {
           eyebrow="Proof, not promises"
           counter="03 / 03"
           title={<>Trusted where failure <span className="text-gradient-brand">isn’t an option.</span></>}
-          intro="The numbers behind two decades of regulated delivery across the Middle East and Africa."
+          intro="The numbers behind regulated delivery worldwide since 2017."
         />
         <div className="mt-14">
           <StatBand stats={proofStats} color="red" />

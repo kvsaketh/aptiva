@@ -22,8 +22,8 @@ const values = [
   { icon: IconBrain, title: 'Build, don\'t demo', desc: 'We ship agentic AI and automation into production for real institutions — not slideware. Your code runs where it counts.' },
   { icon: IconRocket, title: 'Ownership over hierarchy', desc: 'Small, senior squads own outcomes end-to-end. Initiative is rewarded; you\'re trusted with consequential work early.' },
   { icon: IconShield, title: 'Rigor as a default', desc: 'Banking, government and telecom clients demand audited quality. We engineer for security, compliance and uptime by habit.' },
-  { icon: IconUsers, title: 'Mentorship that compounds', desc: 'Principal engineers and architects invest in you. Knowledge moves freely across 16 countries and every practice.' },
-  { icon: IconGlobe, title: 'Regional impact', desc: 'The systems you build power banks, governments and operators that millions of people across MEA rely on daily.' },
+  { icon: IconUsers, title: 'Mentorship that compounds', desc: 'Principal engineers and architects invest in you. Knowledge moves freely across 7 global locations and every practice.' },
+  { icon: IconGlobe, title: 'Global impact', desc: 'The systems you build power banks, governments and operators that millions of people worldwide rely on daily.' },
   { icon: IconTrendingUp, title: 'Grow without a ceiling', desc: 'Dual tracks — deep technical or leadership — with clear progression from associate to principal and partner.' },
 ]
 
@@ -111,12 +111,12 @@ const growth = [
   { icon: IconLayers, title: 'Dual career tracks', desc: 'Choose a deep technical path to Principal or a leadership path to Practice Lead — both equally valued and compensated.' },
   { icon: IconAward, title: 'Funded certifications', desc: 'We sponsor and reward cloud, security and platform certifications, and give you time to prepare.' },
   { icon: IconBrain, title: 'Frontier AI exposure', desc: 'Work hands-on with the latest LLMs, agentic frameworks and automation tooling on real enterprise problems.' },
-  { icon: IconUsers, title: 'Mentorship & guilds', desc: 'Internal guilds, brown-bags and principal-led mentoring move knowledge across all 16 countries we operate in.' },
+  { icon: IconUsers, title: 'Mentorship & guilds', desc: 'Internal guilds, brown-bags and principal-led mentoring move knowledge across all 7 global locations we operate in.' },
 ]
 
 const stats = [
-  { value: '1,200+', label: 'Team members' },
-  { value: '16', label: 'Countries' },
+  { value: '50+', label: 'Enterprise clients' },
+  { value: '7', label: 'Global locations' },
   { value: '30%', label: 'YoY growth' },
   { value: '11', label: 'Proprietary platforms' },
 ]
@@ -133,8 +133,8 @@ export default function Careers() {
     <div>
       <PageHeader
         label="CAREERS"
-        title="Build the region's intelligent future"
-        subtitle="Join the team engineering agentic AI, automation and digital transformation for the banks, governments and operators that move the Middle East and Africa."
+        title="Build the world's intelligent future"
+        subtitle="Join the team engineering agentic AI, automation and digital transformation for the banks, governments and operators that move the world."
         bgImage="/tech-abstract-2.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Careers' }]}
         stats={stats}
@@ -173,8 +173,8 @@ function WhyAptiva() {
               Where the region's most ambitious engineers <span className="text-gradient-brand">do their best work.</span>
             </h2>
             <p className="why-item lead mt-6 max-w-xl text-white/65">
-              For two decades, Aptiva has been the partner regulated institutions trust to modernize. Today we're channeling that
-              into a single mission: bringing agentic AI and intelligent automation into production across the Middle East and Africa.
+              Since 2017, Aptiva has been the partner regulated institutions trust to modernize. Today we're channeling that
+              into a single mission: bringing agentic AI and intelligent automation into production worldwide.
             </p>
             <p className="why-item mt-5 max-w-xl text-[15px] leading-relaxed text-white/55">
               That means the problems you'll solve are real and consequential — onboarding millions of bank customers, automating
@@ -183,7 +183,14 @@ function WhyAptiva() {
               just hard, meaningful engineering for clients who depend on it.
             </p>
             <div className="why-item mt-9 flex flex-wrap gap-4">
-              <a href="#open-roles" className="btn-primary"><span>See open roles</span><IconArrowRight className="relative z-10 h-4 w-4" /></a>
+              <a
+                href="#open-roles"
+                onClick={(e) => {
+                  e.preventDefault()
+                  document.getElementById('open-roles')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="btn-primary"
+              ><span>See open roles</span><IconArrowRight className="relative z-10 h-4 w-4" /></a>
               <a href="#/about" className="btn-ghost group">Our story<IconArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></a>
             </div>
           </Reveal>
@@ -396,7 +403,7 @@ function LifeAtAptiva() {
             <div className="absolute inset-0 bg-grad-blue opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-25" />
             <div className="relative z-10 p-8">
               <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-blue">One global team</span>
-              <h3 className="mt-2 font-display text-2xl font-semibold text-white">16 countries, one culture</h3>
+              <h3 className="mt-2 font-display text-2xl font-semibold text-white">7 global locations, one culture</h3>
               <p className="mt-2 max-w-md text-[14px] leading-relaxed text-white/70">
                 Cross-border squads, shared guilds and knowledge that flows freely — you're never far from someone who's solved it before.
               </p>
@@ -411,8 +418,8 @@ function LifeAtAptiva() {
             <StatBand
               color="blue"
               stats={[
-                { to: 1200, suffix: '+', label: 'Engineers, consultants & specialists' },
-                { to: 16, label: 'Countries across MEA & beyond' },
+                { to: 45, suffix: '', label: 'Strategic partnerships' },
+                { to: 7, label: 'Global locations worldwide' },
                 { to: 30, suffix: '%', label: 'Year-on-year team growth' },
                 { to: 50, suffix: '+', label: 'Enterprise clients served' },
               ]}
@@ -490,7 +497,7 @@ function ProcessAndFaq() {
           <Reveal>
             <Accordion items={[
               { title: 'What is the recruitment process like?', content: <p>Application review, an intro conversation, a practical role-relevant assessment, a team & values round, then an offer. It typically takes two to three weeks, and a real person responds at every stage.</p> },
-              { title: 'Do you offer remote or hybrid work?', content: <p>Yes. Many roles are hybrid or fully remote depending on the position and client requirements. We have people working across the UAE, KSA, Oman, Kenya and India.</p> },
+              { title: 'Do you offer remote or hybrid work?', content: <p>Yes. Many roles are hybrid or fully remote depending on the position and client requirements. We have people working across the UAE, KSA, Egypt, Kenya and Oman.</p> },
               { title: 'Do you sponsor visas and relocation?', content: <p>We sponsor employment visas for the UAE, KSA and other locations where we have offices, and provide relocation support for international hires.</p> },
               { title: 'What does career growth look like?', content: <p>Two equally-valued tracks — a deep technical path to Principal and a leadership path to Practice Lead — with clear progression criteria, funded certifications and principal-led mentorship.</p> },
               { title: 'I don\'t see a role that fits. Can I still apply?', content: <p>Absolutely. We hire for trajectory and new roles open every month. Send your details via the contact page and we\'ll reach out when there\'s a fit.</p> },

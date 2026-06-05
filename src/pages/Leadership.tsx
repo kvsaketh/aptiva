@@ -41,11 +41,11 @@ const team = [
   },
   {
     name: 'Bader Maktabi',
-    role: 'Director, Middle East Operations',
-    region: 'Middle East & Africa',
+    role: 'Director, Operations',
+    region: 'Global Operations',
     glow: 'red' as const,
     linkedin: 'https://www.linkedin.com/in/bader-maktabi-bb49914b/',
-    bio: 'Leads Middle East operations with deep regional expertise, building lasting client relationships and driving market expansion across the region’s most demanding, regulated sectors.',
+    bio: 'Leads operations with deep cross-market expertise, building lasting client relationships and driving expansion across the world’s most demanding, regulated sectors.',
   },
 ]
 
@@ -58,7 +58,7 @@ const philosophy = [
 
 const governance = [
   { title: 'Executive Leadership', desc: 'CEO and functional VPs own strategy, growth and the global P&L — setting direction and standing behind delivery.' },
-  { title: 'Regional Operations', desc: 'Country and regional leaders carry on-the-ground accountability across the Middle East and Africa, close to clients and regulators.' },
+  { title: 'Global Operations', desc: 'Country and regional leaders carry on-the-ground accountability across global markets, close to clients and regulators.' },
   { title: 'Delivery & Quality Governance', desc: 'Delivery, quality-engineering and managed-services leadership enforce the frameworks that keep mission-critical systems audited and dependable.' },
   { title: 'Advisory & Partnerships', desc: 'An advisory network and 45 strategic OEM partnerships inform technology direction, independence and long-term client value.' },
 ]
@@ -77,10 +77,10 @@ export default function Leadership() {
         bgImage="/hero-abstract.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'About', href: '#/about' }, { label: 'Leadership' }]}
         stats={[
-          { value: '1,200+', label: 'People led worldwide' },
-          { value: '16', label: 'Countries of operation' },
-          { value: '~20 yrs', label: 'Combined regional depth' },
+          { value: '7', label: 'Global locations' },
           { value: '50+', label: 'Enterprise relationships' },
+          { value: '45', label: 'Strategic partnerships' },
+          { value: '2017', label: 'Founded' },
         ]}
       />
 
@@ -221,10 +221,10 @@ function Proof() {
         <Reveal className="mt-14">
           <StatBand
             stats={[
-              { to: 1200, suffix: '+', label: 'Engineers & specialists led' },
+              { to: 50, suffix: '+', label: 'Enterprise relationships' },
               { to: 45, suffix: '', label: 'Strategic partnerships' },
               { to: 11, suffix: '', label: 'Proprietary solutions shipped' },
-              { to: 16, suffix: '', label: 'Countries across ME & Africa' },
+              { to: 7, suffix: '', label: 'Global locations' },
             ]}
           />
         </Reveal>

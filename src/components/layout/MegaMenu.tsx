@@ -103,9 +103,9 @@ const megaMenuData: Record<string, MenuDef> = {
       },
     ],
     featured: {
-      eyebrow: 'Two Decades',
+      eyebrow: 'Since 2017',
       title: 'Regulated-Industry DNA',
-      desc: '16 countries across the Middle East & Africa. Compliance built in from day one.',
+      desc: '7 global locations across global markets. Compliance built in from day one.',
       href: '#/industries',
     },
   },
@@ -132,7 +132,7 @@ const megaMenuData: Record<string, MenuDef> = {
     featured: {
       eyebrow: 'Join Us',
       title: 'Build the Enterprise Future',
-      desc: '1,200+ engineers across the region. We are hiring across every practice.',
+      desc: 'Specialist teams across the region. We are hiring across every practice.',
       href: '#/careers',
     },
   },

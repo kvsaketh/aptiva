@@ -6,10 +6,10 @@ import { IconUsers, IconGlobe, IconLayers, IconCheckCircle } from '../components
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { value: 50, suffix: '+', label: 'Clients worldwide', icon: IconUsers },
+  { value: 50, suffix: '+', label: 'Enterprise clients', icon: IconUsers },
   { value: 120, suffix: '+', label: 'Projects delivered', icon: IconCheckCircle },
-  { value: 1200, suffix: '+', label: 'Engineers & specialists', icon: IconGlobe },
-  { value: 16, suffix: '', label: 'Countries across ME & Africa', icon: IconLayers },
+  { value: 7, suffix: '', label: 'Global locations', icon: IconGlobe },
+  { value: 11, suffix: '', label: 'Proprietary platforms', icon: IconLayers },
 ]
 
 export default function StatsBanner() {
@@ -49,7 +49,7 @@ export default function StatsBanner() {
             <h2 className="display-3 mt-4 max-w-xl text-white">Scale that compounds across the enterprise.</h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/55">
-            Two decades of regional delivery — measured in trust, retention and outcomes for the institutions we serve.
+            Global delivery since 2017 — measured in trust, retention and outcomes for the institutions we serve.
           </p>
         </div>
 

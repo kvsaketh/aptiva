@@ -41,7 +41,7 @@ export default function ClientLogosMarquee() {
           </h2>
         </div>
         <p className="max-w-sm text-sm leading-relaxed text-white/55">
-          A partner of record for 50+ enterprises across 16 countries — from national operators to sovereign institutions.
+          A partner of record for 50+ enterprises worldwide — from national operators to sovereign institutions.
         </p>
       </div>
 

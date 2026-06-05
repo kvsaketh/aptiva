@@ -37,7 +37,7 @@ const solutionGroups: Group[] = [
     title: 'Fintech & Localization',
     subtitle: 'Lending automation & multilingual communication',
     description:
-      'Digital lending engines and AI localization purpose-built for Middle East & Africa markets — many languages, many regulators, one platform. Credit decisions in minutes; culturally accurate content in days, not weeks.',
+      'Digital lending engines and AI localization purpose-built for global markets — many languages, many regulators, one platform. Credit decisions in minutes; culturally accurate content in days, not weeks.',
     accent: 'red',
     icon: IconTrendingUp,
     solutions: [
@@ -76,7 +76,7 @@ const headerStats = [
   { value: '11', label: 'Proprietary platforms' },
   { value: '4', label: 'Solution suites' },
   { value: '40+', label: 'Languages supported' },
-  { value: '16', label: 'Countries deployed' },
+  { value: '7', label: 'Global locations' },
 ]
 
 const thesisPoints = [
@@ -109,7 +109,7 @@ export default function Solutions() {
       <PageHeader
         label="SOLUTIONS"
         title="Eleven platforms. One portfolio."
-        subtitle="Proprietary, AI-native enterprise software that turns deep domain expertise into measurable outcomes — engineered for the regulated institutions of the Middle East and Africa."
+        subtitle="Proprietary, AI-native enterprise software that turns deep domain expertise into measurable outcomes — engineered for regulated institutions worldwide."
         bgImage="/tech-abstract-1.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Solutions' }]}
         stats={headerStats}
@@ -290,7 +290,7 @@ function PlatformValue() {
           {[
             { icon: IconServer, t: 'Integration-first', d: 'REST APIs, event streams and pre-built connectors for OpenText, Documentum, SharePoint, SAP, Oracle and core banking.' },
             { icon: IconShield, t: 'Compliance built-in', d: 'GDPR, UAE Data Protection, KSA PDPL, ISO 27001 and SOC 2 controls with automated policy enforcement and audit trails.' },
-            { icon: IconGlobe, t: 'Regional by design', d: 'Arabic-first NLP, RTL interfaces, local identity (UAE PASS) and data-residency options across 16 countries.' },
+            { icon: IconGlobe, t: 'Global by design', d: 'Arabic-first NLP, RTL interfaces, local identity (UAE PASS) and data-residency options across global markets.' },
           ].map((p) => {
             const Icon = p.icon
             return (

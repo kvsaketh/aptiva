@@ -94,7 +94,7 @@ const whyItems = [
   { icon: IconShield, title: 'Full-Stack Accountability', desc: 'Content, security, cloud, data and AI under one relationship — no finger-pointing across a dozen vendors when something breaks.' },
   { icon: IconAward, title: 'Regulated-Industry DNA', desc: 'Audited delivery across banking, government, telecom and energy, where compliance, sovereignty and uptime are non-negotiable.' },
   { icon: IconBrain, title: 'GenAI & Agentic First-Mover', desc: 'Autonomous agents, custom LLMs and RAG delivered in production at enterprise scale — with responsible-AI governance baked in.' },
-  { icon: IconGlobe, title: 'ME + Africa Dual-Market', desc: 'Two decades of on-the-ground regional expertise spanning 16 countries, two continents and Arabic-first delivery.' },
+  { icon: IconGlobe, title: 'Global Multi-Market', desc: 'On-the-ground expertise since 2017 spanning 7 global locations and Arabic-first delivery.' },
   { icon: IconLayers, title: '11-Strong Solution Portfolio', desc: 'Proprietary IP that accelerates delivery, creates switching cost and drives long-term recurring value.' },
 ]
 
@@ -102,7 +102,7 @@ const statBand = [
   { to: 6, label: 'Core capability pillars' },
   { to: 6, label: 'Specialized practices' },
   { to: 45, label: 'Strategic OEM partners' },
-  { to: 1200, suffix: '+', label: 'Certified experts' },
+  { to: 7, suffix: '', label: 'Global locations' },
 ]
 
 const techStack = [
@@ -121,14 +121,14 @@ export default function Services() {
       <PageHeader
         label="SERVICES"
         title="Full-Stack Digital Transformation"
-        subtitle="Six core pillars and six specialized practices — engineered for the demands of regulated industries across the Middle East and Africa, and led everywhere by Agentic AI, GenAI and intelligent automation."
+        subtitle="Six core pillars and six specialized practices — engineered for the demands of regulated industries worldwide, and led everywhere by Agentic AI, GenAI and intelligent automation."
         bgImage="/tech-abstract-2.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Services' }]}
         stats={[
           { value: '12', label: 'Service domains' },
           { value: '45', label: 'OEM partners' },
-          { value: '1,200+', label: 'Certified experts' },
-          { value: '16', label: 'Countries' },
+          { value: '45', label: 'Strategic partnerships' },
+          { value: '7', label: 'Global locations' },
         ]}
       />
 
@@ -167,7 +167,7 @@ function Positioning() {
         <Reveal stagger=".pos-item">
           <span className="pos-item eyebrow-red">How we deliver</span>
           <p className="pos-item mt-7 max-w-5xl font-display text-[clamp(24px,3.4vw,46px)] font-medium leading-[1.18] tracking-[-0.02em] text-white text-balance">
-            One accountable partner across the entire transformation stack — pairing two decades of
+            One accountable partner across the entire transformation stack — pairing years of
             regulated-industry delivery with a <span className="text-gradient-brand">first-mover edge in GenAI and agentic automation.</span>
           </p>
           <div className="pos-item mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">

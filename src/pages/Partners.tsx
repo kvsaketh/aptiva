@@ -50,7 +50,7 @@ const groupMeta: Record<string, { icon: typeof IconCloud; blurb: string; tags: s
   },
   'Global SIs & Regional': {
     icon: IconGlobe,
-    blurb: 'Co-delivery alliances and regional sovereign-cloud providers — extending capacity and local compliance reach across the Middle East and Africa.',
+    blurb: 'Co-delivery alliances and sovereign-cloud providers — extending capacity and local compliance reach across global markets.',
     tags: ['Co-delivery', 'Regional', 'Sovereign'],
   },
 }
@@ -103,8 +103,8 @@ const engagement = [
 
 /* Become-a-partner tracks. */
 const partnerTracks = [
-  { icon: IconRocket, title: 'Technology ISVs', desc: 'Embed your platform into our solution portfolio and reach 50+ enterprise clients across 16 countries with certified delivery and local support.' },
-  { icon: IconGlobe, title: 'Regional Resellers', desc: 'Extend your geographic reach with our implementation muscle, managed services and regulated-industry credentials across ME & Africa.' },
+  { icon: IconRocket, title: 'Technology ISVs', desc: 'Embed your platform into our solution portfolio and reach 50+ enterprise clients worldwide with certified delivery and local support.' },
+  { icon: IconGlobe, title: 'Regional Resellers', desc: 'Extend your geographic reach with our implementation muscle, managed services and regulated-industry credentials across global markets.' },
   { icon: IconLayers, title: 'Global System Integrators', desc: 'Co-deliver large transformation programs — we bring regional depth, you bring scale, clients get one seamless team.' },
 ]
 
@@ -120,7 +120,7 @@ export default function Partners() {
       <PageHeader
         label="Strategic Partners"
         title="Best-in-class technology, one accountable partner."
-        subtitle="Deep technical alliances across cloud, content, AI, automation, cybersecurity and infrastructure — orchestrated into outcomes for the Middle East and Africa's most demanding institutions."
+        subtitle="Deep technical alliances across cloud, content, AI, automation, cybersecurity and infrastructure — orchestrated into outcomes for the world's most demanding institutions."
         bgImage="/about-partners.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Partners' }]}
         stats={[
@@ -162,7 +162,7 @@ function EcosystemIntro({ flagship }: { flagship: Brand[] }) {
           <Reveal stagger=".intro-item" className="lg:col-span-7">
             <span className="intro-item eyebrow-red">Why our ecosystem matters</span>
             <p className="intro-item mt-7 font-display text-[clamp(22px,3vw,38px)] font-medium leading-[1.22] tracking-[-0.02em] text-white text-balance">
-              Great outcomes are rarely built on a single product. We pair two decades of
+              Great outcomes are rarely built on a single product. We pair years of
               regulated-industry delivery with <span className="text-gradient-brand">the world's leading platforms</span> —
               then orchestrate them into one integrated, accountable solution.
             </p>

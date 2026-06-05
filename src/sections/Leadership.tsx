@@ -6,11 +6,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const team = [
   { name: 'Swamy VLN Boyapati', role: 'MD & CEO', region: 'Global Headquarters', image: '/portrait-swamy.jpg' },
-  { name: 'Bader Maktabi', role: 'Director, Middle East Operations', region: 'Middle East & Africa', image: '/portrait-bader.jpg' },
-  { name: 'Arun Kumar', role: 'VP, Business Development', region: 'Growth & Expansion', image: '/portrait-arun.jpg' },
-  { name: 'John Cunningham', role: 'VP, Consulting', region: 'Advisory & Strategy', image: '/portrait-john.jpg' },
   { name: 'George Avvaru', role: 'VP, Delivery & Operations', region: 'Execution Excellence', image: '/portrait-george.jpg' },
-  { name: 'Venu Madhav Moola', role: 'Director, Strategic Programs', region: 'Governance & Programs', image: '/portrait-venu.jpg' },
+  { name: 'Bader Maktabi', role: 'Director, Operations', region: 'Global Operations', image: '/portrait-bader.jpg' },
 ]
 
 export default function Leadership() {

@@ -49,8 +49,8 @@ const industriesData: Record<string, IndustryData> = {
     icon: IconBuilding,
     image: '/industry-banking.jpg',
     tagline: 'Digital-First Banking for the Modern Economy',
-    subtitle: 'Agentic onboarding, intelligent lending and compliant content for the banks, NBFCs and insurers reshaping the Middle East & Africa.',
-    intro: 'Banking in the Middle East and Africa is in the middle of its deepest structural shift in a generation. Open-banking mandates, instant-payment rails, digital-native challengers and customers who expect to open an account in minutes have made the legacy core a liability rather than an asset. Aptiva has spent two decades inside this sector — modernizing content, automating credit and onboarding, and putting GenAI into production for fifteen-plus institutions across the GCC and East Africa. We pair that domain fluency with audited, regulator-ready delivery so transformation lands without compromising trust.',
+    subtitle: 'Agentic onboarding, intelligent lending and compliant content for the banks, NBFCs and insurers reshaping global markets.',
+    intro: 'Banking worldwide is in the middle of its deepest structural shift in a generation. Open-banking mandates, instant-payment rails, digital-native challengers and customers who expect to open an account in minutes have made the legacy core a liability rather than an asset. Aptiva has spent years inside this sector — modernizing content, automating credit and onboarding, and putting GenAI into production for fifteen-plus institutions worldwide. We pair that domain fluency with audited, regulator-ready delivery so transformation lands without compromising trust.',
     challengeIntro: 'The barriers are rarely the technology itself — they are the regulatory weight, legacy entanglement and data fragmentation that surround it.',
     challenges: [
       { title: 'Legacy core constraints', desc: 'Monolithic core banking systems throttle product velocity and make every new channel a custom integration project.' },
@@ -97,8 +97,8 @@ const industriesData: Record<string, IndustryData> = {
     icon: IconAntenna,
     image: '/industry-telecom.jpg',
     tagline: 'Next-Generation Networks, Intelligent Operations',
-    subtitle: 'OSS/BSS modernization, omni-channel CX and AI-driven network intelligence for the operators connecting two continents.',
-    intro: 'Telecom operators in the Middle East and Africa run some of the world’s most demanding networks — spanning 5G, IoT and decades of legacy infrastructure, serving tens of millions of subscribers each. As connectivity commoditizes, the battle has moved to experience, operational efficiency and new digital revenue. Aptiva partners with leading operators such as Etisalat (e&) on end-to-end transformation: from enterprise content platforms serving ten-thousand-plus employees to AI-powered assurance processing billions of network events a day.',
+    subtitle: 'OSS/BSS modernization, omni-channel CX and AI-driven network intelligence for the operators connecting the world.',
+    intro: 'Telecom operators worldwide run some of the world’s most demanding networks — spanning 5G, IoT and decades of legacy infrastructure, serving tens of millions of subscribers each. As connectivity commoditizes, the battle has moved to experience, operational efficiency and new digital revenue. Aptiva partners with leading operators such as Etisalat (e&) on end-to-end transformation: from enterprise content platforms serving ten-thousand-plus employees to AI-powered assurance processing billions of network events a day.',
     challengeIntro: 'Operators must modernize the experience layer and the operational core simultaneously — without disrupting a network the region depends on.',
     challenges: [
       { title: 'Multi-generation complexity', desc: 'Running 5G, IoT and legacy estates in parallel multiplies operational and integration overhead.' },
@@ -610,7 +610,7 @@ function Clients({ industry }: { industry: IndustryData }) {
           theme="light"
           eyebrow="Representative clients"
           title={<>Trusted across <span className="text-gradient-brand">the sector.</span></>}
-          intro="A selection of the institutions Aptiva serves in this industry across the Middle East and Africa."
+          intro="A selection of the institutions Aptiva serves in this industry across global markets."
         />
         <Reveal stagger=".cl-cell" className="mt-14 flex flex-wrap gap-3">
           {industry.clients.map((slug) => (

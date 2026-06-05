@@ -224,7 +224,7 @@ export default function Insights() {
       <PageHeader
         label="Insights"
         title="Thought leadership for the intelligent enterprise."
-        subtitle="Expert perspectives on Agentic AI, GenAI, intelligent automation and digital transformation across the regulated industries of the Middle East and Africa."
+        subtitle="Expert perspectives on Agentic AI, GenAI, intelligent automation and digital transformation across regulated industries worldwide."
         bgImage="/tech-abstract-2.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Insights' }]}
         stats={[

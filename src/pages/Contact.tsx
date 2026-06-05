@@ -62,7 +62,7 @@ const interests = [
 
 const reasons = [
   { icon: IconBrain, title: 'GenAI & agentic-first', desc: 'Production LLMs, agentic workflows and intelligent automation — engineered for the region, not retro-fitted from a demo.' },
-  { icon: IconShield, title: 'Regulated-industry rigor', desc: 'Two decades delivering for banks, governments, telecoms and energy where compliance and uptime are non-negotiable.' },
+  { icon: IconShield, title: 'Regulated-industry rigor', desc: 'Years delivering for banks, governments, telecoms and energy where compliance and uptime are non-negotiable.' },
   { icon: IconGlobe, title: 'On-the-ground presence', desc: 'Local teams across the UAE, KSA, Oman and Kenya — same time zone, same language, real accountability.' },
   { icon: IconLayers, title: 'One accountable partner', desc: 'Content, cloud, security, data and AI under a single relationship — no finger-pointing across vendors.' },
 ]
@@ -87,7 +87,7 @@ export default function Contact() {
       <PageHeader
         label="CONTACT"
         title="Let's engineer what's next"
-        subtitle="Start with one conversation. Talk to a team that has delivered AI, cloud and digital transformation for the institutions that move the Middle East and Africa forward."
+        subtitle="Start with one conversation. Talk to a team that has delivered AI, cloud and digital transformation for the institutions that move the world forward."
         bgImage="/tech-abstract-1.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Contact' }]}
         stats={[
@@ -234,7 +234,7 @@ function PrimaryContact() {
                 </p>
                 <div className="mt-5 flex items-center gap-3">
                   {[
-                    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/aptivacorp/', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+                    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/aptiva-technologies/', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
                     { label: 'X', href: 'https://x.com/AptivaCorp', path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
                   ].map((s) => (
                     <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
@@ -300,10 +300,10 @@ function Offices() {
       <Grain />
       <div className="container-xl section-y relative z-10">
         <SectionHeading
-          eyebrow="Find us in the region"
+          eyebrow="Find us around the world"
           counter="02 / 03"
           title={<>Local teams, <span className="text-gradient-brand">on the ground.</span></>}
-          intro="Seven offices across the Middle East and Africa mean same-time-zone collaboration, regional compliance fluency and people you can meet in person."
+          intro="Seven offices worldwide mean local presence, compliance fluency and people you can meet in person."
         />
 
         <Reveal stagger=".office-card" className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -11,7 +11,7 @@ const differentiators = [
   { num: '04', title: 'GenAI & Agentic AI First-Mover', desc: 'LLMs, agentic workflows, and custom AI at enterprise scale.' },
   { num: '05', title: 'Multi-OEM Independence', desc: 'Vendor-agnostic. We recommend what works.' },
   { num: '06', title: 'Speed & Agility of a Boutique', desc: 'Boutique responsiveness with enterprise delivery muscle.' },
-  { num: '07', title: 'ME + Africa Dual-Market', desc: 'Two decades of regional expertise across 16 countries.' },
+  { num: '07', title: 'Global Multi-Market', desc: 'Global expertise since 2017 across 7 global locations.' },
   { num: '08', title: '11 Solutions Portfolio', desc: 'Proprietary IP that creates switching cost and recurring revenue.' },
 ]
 
