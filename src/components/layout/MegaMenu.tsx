@@ -151,15 +151,35 @@ export default function MegaMenu() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileSection, setMobileSection] = useState<string | null>(null)
   const navRef = useRef<HTMLElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
+  const mobilePanelRef = useRef<HTMLDivElement>(null)
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const location = useLocation()
 
   useEffect(() => {
     setActiveMenu(null)
     setMobileOpen(false)
+    setMobileSection(null)
   }, [location.pathname])
+
+  // Lock background scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  // Staggered entrance for the mobile rows.
+  useEffect(() => {
+    if (mobileOpen && mobilePanelRef.current) {
+      gsap.fromTo(
+        mobilePanelRef.current.querySelectorAll('.mob-row'),
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.06, ease: 'power2.out' }
+      )
+    }
+  }, [mobileOpen])
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -300,27 +320,68 @@ export default function MegaMenu() {
         )}
       </nav>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Overlay — single-open accordion */}
       {mobileOpen && (
-        <div className="surface-ink-raised fixed inset-0 z-[60] overflow-y-auto pt-6">
-          <div className="flex items-center justify-between px-6 pb-4">
-            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-[2.8875rem] w-auto" />
-            <button className="p-2 text-white" onClick={() => setMobileOpen(false)} aria-label="Close menu">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+        <div className="fixed inset-0 z-[60] flex flex-col bg-ink-900 lg:hidden">
+          {/* Header */}
+          <div className="flex h-[80px] shrink-0 items-center justify-between border-b border-white/10 px-6">
+            <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="h-[2.31rem] w-auto" />
+            <button className="-mr-2 p-2 text-white" onClick={() => setMobileOpen(false)} aria-label="Close menu">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
             </button>
           </div>
-          <div className="space-y-5 px-6 py-6">
-            {navItems.map((item) => (
-              <div key={item.key} className="border-b border-white/10 pb-5">
-                <a href={item.href} onClick={() => setMobileOpen(false)} className="mb-3 block font-display text-xl font-semibold uppercase tracking-[0.04em] text-white">{item.label}</a>
-                <div className="grid grid-cols-1 gap-1 pl-1 sm:grid-cols-2">
-                  {megaMenuData[item.key].columns.flatMap((c) => c.items).map((sub) => (
-                    <a key={sub.href} href={sub.href} onClick={() => setMobileOpen(false)} className="py-1.5 text-sm text-white/65 transition-colors hover:text-brand-red">{sub.label}</a>
-                  ))}
+
+          {/* Accordion */}
+          <div ref={mobilePanelRef} className="flex-1 overflow-y-auto px-6">
+            {navItems.map((item) => {
+              const open = mobileSection === item.key
+              const subs = megaMenuData[item.key].columns.flatMap((c) => c.items)
+              return (
+                <div key={item.key} className="mob-row border-b border-white/10">
+                  <button
+                    onClick={() => setMobileSection(open ? null : item.key)}
+                    className="flex w-full items-center justify-between py-5 text-left"
+                    aria-expanded={open}
+                  >
+                    <span className="font-display text-[22px] font-semibold tracking-[-0.01em] text-white">{item.label}</span>
+                    <span className={`flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 ${open ? 'rotate-45 border-brand-red/60 text-brand-red' : 'border-white/15 text-white/65'}`}>
+                      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1.5v11M1.5 7h11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+                    </span>
+                  </button>
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                    <div className="overflow-hidden">
+                      <div className="pb-5">
+                        <a href={item.href} onClick={() => setMobileOpen(false)} className="mb-2 inline-flex items-center gap-1.5 font-mono text-[10.5px] uppercase tracking-[0.16em] text-brand-red">
+                          View all {item.label} <IconArrowRight className="h-3 w-3" />
+                        </a>
+                        <div className="grid grid-cols-1">
+                          {subs.map((sub) => {
+                            const Icon = sub.icon
+                            return (
+                              <a key={sub.href} href={sub.href} onClick={() => setMobileOpen(false)} className="group flex items-center gap-3 py-2.5 text-[14.5px] text-white/70 transition-colors hover:text-white">
+                                {Icon && <span className="icon-tile h-7 w-7 shrink-0 rounded-none"><Icon className="h-[15px] w-[15px] text-white/70" /></span>}
+                                {sub.label}
+                                <IconArrowRight className="ml-auto h-3.5 w-3.5 -translate-x-1 text-brand-red opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                              </a>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-            <a href="#/contact" onClick={() => setMobileOpen(false)} className="btn-primary mt-2 w-full"><span>Get in touch</span></a>
+              )
+            })}
+          </div>
+
+          {/* Footer */}
+          <div className="shrink-0 border-t border-white/10 px-6 py-5">
+            <a href="#/contact" onClick={() => setMobileOpen(false)} className="btn-primary w-full"><span>Get in touch</span></a>
+            <div className="mt-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.12em] text-white/45">
+              <a href="#/careers" onClick={() => setMobileOpen(false)} className="transition-colors hover:text-white">Careers</a>
+              <a href="#/leadership" onClick={() => setMobileOpen(false)} className="transition-colors hover:text-white">Leadership</a>
+              <a href="mailto:sales@aptivacorp.ae" className="transition-colors hover:text-white">Email us</a>
+            </div>
           </div>
         </div>
       )}

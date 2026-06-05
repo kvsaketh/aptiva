@@ -10,6 +10,7 @@ import TiltCard from '../components/kit/TiltCard'
 import Counter from '../components/kit/Counter'
 import Marquee from '../components/kit/Marquee'
 import CTASection from '../components/kit/CTASection'
+import IndustryMotif from '../components/kit/IndustryMotif'
 import BrandMark from '../components/BrandMark'
 import { brand } from '../data/brands'
 import {
@@ -381,7 +382,7 @@ export default function IndustryDetail() {
         }))}
       />
 
-      <Overview industry={industry} />
+      <Overview industry={industry} slug={key} />
       <Challenges industry={industry} />
       <HowWeHelp industry={industry} />
       <Solutions industry={industry} />
@@ -403,7 +404,7 @@ export default function IndustryDetail() {
 
 /* ────────────── OVERVIEW (dark flat, marquee) ────────────── */
 
-function Overview({ industry }: { industry: IndustryData }) {
+function Overview({ industry, slug }: { industry: IndustryData; slug: string }) {
   return (
     <section className="surface-ink-flat relative overflow-hidden">
       <div className="border-b border-white/10 py-4">
@@ -415,16 +416,22 @@ function Overview({ industry }: { industry: IndustryData }) {
         />
       </div>
       <div className="container-xl section-y">
-        <Reveal stagger=".ov-item">
-          <span className="ov-item eyebrow-red">Sector overview</span>
-          <p className="ov-item mt-7 max-w-5xl font-display text-[clamp(22px,3vw,40px)] font-medium leading-[1.22] tracking-[-0.02em] text-white text-balance">
-            {industry.intro}
-          </p>
-          <div className="ov-item mt-10 flex flex-wrap gap-4">
-            <a href="#/case-studies" className="btn-dark group !border !border-white/15 !bg-white/[0.04] !text-white hover:!bg-white/10">See the proof<IconArrowRight className="h-4 w-4" /></a>
-            <a href="#/contact" className="inline-flex items-center gap-2 px-2 py-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white">Talk to our team<IconArrowUpRight className="h-4 w-4 text-brand-red" /></a>
-          </div>
-        </Reveal>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.82fr] lg:gap-20">
+          <Reveal stagger=".ov-item" className="order-2 lg:order-1">
+            <span className="ov-item eyebrow-red">Sector overview</span>
+            <p className="ov-item mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 md:text-[16px]">
+              {industry.intro}
+            </p>
+            <div className="ov-item mt-9 flex flex-wrap gap-4">
+              <a href="#/case-studies" className="btn-dark group !border !border-white/15 !bg-white/[0.04] !text-white hover:!bg-white/10">See the proof<IconArrowRight className="h-4 w-4" /></a>
+              <a href="#/contact" className="inline-flex items-center gap-2 px-2 py-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white">Talk to our team<IconArrowUpRight className="h-4 w-4 text-brand-red" /></a>
+            </div>
+          </Reveal>
+
+          <Reveal from="scale" className="order-1 lg:order-2">
+            <IndustryMotif slug={slug} />
+          </Reveal>
+        </div>
       </div>
     </section>
   )
