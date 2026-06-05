@@ -11,6 +11,10 @@ function required(name: string): string {
 export const env = {
   isProduction: process.env.NODE_ENV === "production",
   databaseUrl: required("DATABASE_URL"),
+  // TLS for managed MySQL. DB_SSL_CA (path to provider CA PEM) = verified TLS;
+  // DB_SSL=true without a CA = encrypted-but-unverified (private VCN only).
+  dbSsl: process.env.DB_SSL === "true",
+  dbSslCa: process.env.DB_SSL_CA ?? "",
 
   // Firebase Auth — project id used to verify ID tokens (issuer/audience).
   // Not "required()" so the public site still boots before auth is configured.
