@@ -10,10 +10,12 @@ if (!connectionString) {
 // Mirror the app's TLS handling so `db:push`/`db:migrate` work against managed
 // MySQL (e.g. OCI MySQL HeatWave). With TLS we pass parsed credentials so the
 // ssl option applies; otherwise the plain URL is enough.
+// TLS mirrors the app: verification always ON (CA bundle when provided, else
+// Node's built-in roots). Never disable certificate verification.
 const useSsl = process.env.DB_SSL === "true" || !!process.env.DB_SSL_CA;
 const ssl = process.env.DB_SSL_CA
-  ? { ca: readFileSync(process.env.DB_SSL_CA) }
-  : { rejectUnauthorized: false };
+  ? { ca: readFileSync(process.env.DB_SSL_CA), minVersion: "TLSv1.2" as const }
+  : { minVersion: "TLSv1.2" as const };
 
 const dbCredentials = useSsl
   ? (() => {

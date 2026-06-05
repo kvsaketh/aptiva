@@ -10,14 +10,14 @@ const fullSchema = { ...schema, ...relations };
 let instance: ReturnType<typeof drizzle<typeof fullSchema>>;
 
 /**
- * TLS for managed MySQL (e.g. OCI MySQL HeatWave). Preferred: set DB_SSL_CA to the
- * provider's CA bundle path for full certificate verification. If DB_SSL=true but
- * no CA is given, the connection is still encrypted but not cert-verified — only
- * acceptable over a private VCN (never the public internet).
+ * TLS for managed MySQL (e.g. OCI MySQL HeatWave). Certificate verification is
+ * always ON. Set DB_SSL_CA to the provider's CA bundle for providers whose cert
+ * isn't in the public trust store (OCI MySQL); with DB_SSL=true and no CA we
+ * verify against Node's built-in roots. We never disable verification.
  */
 function sslOptions() {
-  if (env.dbSslCa) return { ca: readFileSync(env.dbSslCa) };
-  if (env.dbSsl) return { rejectUnauthorized: false };
+  if (env.dbSslCa) return { ca: readFileSync(env.dbSslCa), minVersion: "TLSv1.2" as const };
+  if (env.dbSsl) return { minVersion: "TLSv1.2" as const };
   return undefined;
 }
 
