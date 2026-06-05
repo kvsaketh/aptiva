@@ -8,31 +8,13 @@ const regions = [
   {
     name: 'MIDDLE EAST & AFRICA',
     locations: [
-      { city: 'Abu Dhabi Office', address: 'Dar Al Salaam Building, 1016\nLiwa Corniche Street\nAbu Dhabi, UAE' },
-      { city: 'Dubai Office', address: 'Platinum Business Centre\nAl Nahda 2, P.O. Box 82264\nDubai, UAE' },
-      { city: 'Riyadh Office', address: 'Le Cygne Commercial Center\nKaab Bin Malik Street, Al Olaya\nRiyadh, 12611, KSA' },
+      { city: 'Ras Al-Khaimah · HQ', address: 'Aptiva Technologies FZE\nA4-332, Al Hamra Ind. Zone FZ\nP.O. Box 82264, Ras Al-Khaimah, UAE' },
+      { city: 'Dubai Office', address: 'Suite 504, Platinum Business Centre\nAl Nahda 2, P.O. Box 82264\nDubai, UAE' },
+      { city: 'Abu Dhabi Office', address: 'Dar Al Salaam Building, Office 1016\n10th Floor, Liwa Corniche Street\nAbu Dhabi, UAE' },
+      { city: 'Riyadh Office', address: 'Le Cygne Commercial Center\nKaab Bin Malik Street, Al Olaya\nRiyadh 12611, KSA' },
+      { city: 'New Cairo Office', address: 'Aptivamena Tech · District 5, Mindhouse Campus\nG05-B01-M05, Kilo 9 Ain Sokhna Road\nNew Cairo, Egypt' },
       { city: 'Nairobi Office', address: 'Purshottam Place, Westlands\nP.O. Box 46728\nNairobi, Kenya' },
-    ],
-  },
-  {
-    name: 'AMERICAS',
-    locations: [
-      { city: 'US Head Office', address: '100 Franklin Sq. Drive, Suite 210\nSomerset, NJ 08873, USA' },
-      { city: 'US Office (CA)', address: '5092 Roxborough Drive\nPlacentia, CA 92870, USA' },
-      { city: 'Canada Office', address: '4430 Glen Erin Drive\nMississauga, Ontario L5M 4GM\nCanada' },
-    ],
-  },
-  {
-    name: 'EUROPE',
-    locations: [
-      { city: 'UK Head Office', address: '71-75 Shelton Street\nCovent Garden\nLondon WC2H 9JQ, UK' },
-      { city: 'UK Office (Birmingham)', address: 'Centre Court\n1301 Stratford Road\nBirmingham B28 9HH, UK' },
-    ],
-  },
-  {
-    name: 'INDIA',
-    locations: [
-      { city: 'India Office', address: 'Ground Floor, N Heights\nMadhapur, Hyderabad\nTelangana 12354, India' },
+      { city: 'Muscat Office', address: '#0400Z107, Building 4\nKnowledge Oasis Muscat\nP.O. Box 1367, Muscat, Oman' },
     ],
   },
 ]
@@ -96,11 +78,11 @@ export default function GlobalPresence() {
             className="text-black font-bold leading-[1.05] tracking-[-0.03em]"
             style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
           >
-            10 Offices. 16 Countries. One Mission.
+            7 Global Locations. One Mission.
           </h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12">
+        <div className={`flex flex-wrap justify-center gap-3 md:gap-4 mb-12 ${regions.length > 1 ? '' : 'hidden'}`}>
           {regions.map((region, i) => (
             <button
               key={region.name}

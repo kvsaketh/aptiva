@@ -5,8 +5,8 @@ You are rebuilding an internal page of the **Aptiva Technologies** marketing sit
 standard reference is `src/pages/Home.tsx` + `src/sections/*`. Match that quality.
 
 ## Company context (be accurate & context-aware)
-Aptiva Technologies — full-stack IT & digital-transformation partner for the Middle East
-& Africa. ~20 years, 16 countries, 1,200+ engineers, 50+ enterprise clients, 11 proprietary
+Aptiva Technologies — full-stack IT & digital-transformation partner for the global
+enterprise. Founded 2017, 7 global locations, 50+ enterprise clients, 45 strategic partnerships, 11 proprietary
 solutions. **Lead themes to emphasize everywhere: Agentic AI, GenAI, intelligent automation,
 and digital transformation** — woven into an enterprise, regulated-industry narrative (banking,
 government, telecom, energy). Voice: confident, precise, outcome-oriented, senior. No fluff,

@@ -126,7 +126,7 @@ const solutionsData: Record<string, Solution> = {
       { title: 'Intelligent extraction', desc: 'NLP extracts fields, tables and clauses from unstructured documents and maps them to your schema.' },
       { title: 'Automated validation', desc: 'Business-rule and cross-document checks flag anomalies before data reaches systems of record.' },
       { title: 'Self-learning taxonomy', desc: 'Continuous learning from human corrections lifts accuracy and absorbs new document types without re-templating.' },
-      { title: '40+ language support', desc: 'Native handling of Arabic dialects, RTL layouts and mixed-language documents common across MEA.' },
+      { title: '40+ language support', desc: 'Native handling of Arabic dialects, RTL layouts and mixed-language documents common across global markets.' },
       { title: 'Pre-trained model library', desc: 'Ready-to-run models for invoices, contracts, KYC, medical and legal documents accelerate go-live.' },
       { title: 'API-first architecture', desc: 'Stateless REST and event APIs drop Classifyr into any capture, RPA or workflow pipeline.' },
     ],
@@ -259,7 +259,7 @@ const solutionsData: Record<string, Solution> = {
     accent: 'red',
     image: '/solution-kredence.jpg',
     overview:
-      'Kredence digitizes the entire corporate lending lifecycle — origination, AI credit decisioning, risk assessment, approval, disbursement and servicing. Built for banks and financial institutions across MEA, Kredence integrates with core banking, automates regulatory compliance and gives lending officers real-time portfolio intelligence — compressing corporate loan decisions from days to as little as 15 minutes.',
+      'Kredence digitizes the entire corporate lending lifecycle — origination, AI credit decisioning, risk assessment, approval, disbursement and servicing. Built for banks and financial institutions worldwide, Kredence integrates with core banking, automates regulatory compliance and gives lending officers real-time portfolio intelligence — compressing corporate loan decisions from days to as little as 15 minutes.',
     problem: {
       headline: 'Corporate credit is too slow, too manual and too opaque.',
       body: 'Corporate lending decisions crawl through spreadsheets, email approvals and disconnected risk checks. Relationship managers lose deals to faster competitors, risk teams lack a real-time portfolio view, and regulators demand evidence the bank cannot easily produce. Kredence turns lending into a fast, governed, data-driven flow.',
@@ -361,7 +361,7 @@ const solutionsData: Record<string, Solution> = {
     overview:
       'Linguara is Aptiva\'s GenAI-powered localization platform that helps enterprises communicate accurately across diverse linguistic and cultural markets. Combining machine translation, human-in-the-loop review and genuine cultural adaptation, Linguara localizes marketing, legal, customer and product content across Arabic dialects, English, French, Swahili and 80+ languages — cutting localization cost by up to 70% with zero-code deployment.',
     problem: {
-      headline: 'In MEA, getting language wrong is a brand and compliance risk.',
+      headline: 'In global markets, getting language wrong is a brand and compliance risk.',
       body: 'Operating across many languages and cultures, enterprises face a painful trade-off: cheap machine translation that is tone-deaf and non-compliant, or human translation that is slow and expensive. Inconsistent terminology and cultural missteps damage brand and, in regulated content, create real liability. Linguara delivers human-quality localization at machine speed.',
       pains: [
         'Slow, costly human translation that bottlenecks every launch',

@@ -10,6 +10,7 @@ import TiltCard from '../components/kit/TiltCard'
 import Counter from '../components/kit/Counter'
 import Marquee from '../components/kit/Marquee'
 import CTASection from '../components/kit/CTASection'
+import IndustryMotif from '../components/kit/IndustryMotif'
 import BrandMark from '../components/BrandMark'
 import { brand } from '../data/brands'
 import {
@@ -49,8 +50,8 @@ const industriesData: Record<string, IndustryData> = {
     icon: IconBuilding,
     image: '/industry-banking.jpg',
     tagline: 'Digital-First Banking for the Modern Economy',
-    subtitle: 'Agentic onboarding, intelligent lending and compliant content for the banks, NBFCs and insurers reshaping the Middle East & Africa.',
-    intro: 'Banking in the Middle East and Africa is in the middle of its deepest structural shift in a generation. Open-banking mandates, instant-payment rails, digital-native challengers and customers who expect to open an account in minutes have made the legacy core a liability rather than an asset. Aptiva has spent two decades inside this sector — modernizing content, automating credit and onboarding, and putting GenAI into production for fifteen-plus institutions across the GCC and East Africa. We pair that domain fluency with audited, regulator-ready delivery so transformation lands without compromising trust.',
+    subtitle: 'Agentic onboarding, intelligent lending and compliant content for the banks, NBFCs and insurers reshaping global markets.',
+    intro: 'Banking worldwide is in the middle of its deepest structural shift in a generation. Open-banking mandates, instant-payment rails, digital-native challengers and customers who expect to open an account in minutes have made the legacy core a liability rather than an asset. Aptiva has spent years inside this sector — modernizing content, automating credit and onboarding, and putting GenAI into production for fifteen-plus institutions worldwide. We pair that domain fluency with audited, regulator-ready delivery so transformation lands without compromising trust.',
     challengeIntro: 'The barriers are rarely the technology itself — they are the regulatory weight, legacy entanglement and data fragmentation that surround it.',
     challenges: [
       { title: 'Legacy core constraints', desc: 'Monolithic core banking systems throttle product velocity and make every new channel a custom integration project.' },
@@ -97,8 +98,8 @@ const industriesData: Record<string, IndustryData> = {
     icon: IconAntenna,
     image: '/industry-telecom.jpg',
     tagline: 'Next-Generation Networks, Intelligent Operations',
-    subtitle: 'OSS/BSS modernization, omni-channel CX and AI-driven network intelligence for the operators connecting two continents.',
-    intro: 'Telecom operators in the Middle East and Africa run some of the world’s most demanding networks — spanning 5G, IoT and decades of legacy infrastructure, serving tens of millions of subscribers each. As connectivity commoditizes, the battle has moved to experience, operational efficiency and new digital revenue. Aptiva partners with leading operators such as Etisalat (e&) on end-to-end transformation: from enterprise content platforms serving ten-thousand-plus employees to AI-powered assurance processing billions of network events a day.',
+    subtitle: 'OSS/BSS modernization, omni-channel CX and AI-driven network intelligence for the operators connecting the world.',
+    intro: 'Telecom operators worldwide run some of the world’s most demanding networks — spanning 5G, IoT and decades of legacy infrastructure, serving tens of millions of subscribers each. As connectivity commoditizes, the battle has moved to experience, operational efficiency and new digital revenue. Aptiva partners with leading operators such as Etisalat (e&) on end-to-end transformation: from enterprise content platforms serving ten-thousand-plus employees to AI-powered assurance processing billions of network events a day.',
     challengeIntro: 'Operators must modernize the experience layer and the operational core simultaneously — without disrupting a network the region depends on.',
     challenges: [
       { title: 'Multi-generation complexity', desc: 'Running 5G, IoT and legacy estates in parallel multiplies operational and integration overhead.' },
@@ -381,7 +382,7 @@ export default function IndustryDetail() {
         }))}
       />
 
-      <Overview industry={industry} />
+      <Overview industry={industry} slug={key} />
       <Challenges industry={industry} />
       <HowWeHelp industry={industry} />
       <Solutions industry={industry} />
@@ -403,7 +404,7 @@ export default function IndustryDetail() {
 
 /* ────────────── OVERVIEW (dark flat, marquee) ────────────── */
 
-function Overview({ industry }: { industry: IndustryData }) {
+function Overview({ industry, slug }: { industry: IndustryData; slug: string }) {
   return (
     <section className="surface-ink-flat relative overflow-hidden">
       <div className="border-b border-white/10 py-4">
@@ -415,16 +416,22 @@ function Overview({ industry }: { industry: IndustryData }) {
         />
       </div>
       <div className="container-xl section-y">
-        <Reveal stagger=".ov-item">
-          <span className="ov-item eyebrow-red">Sector overview</span>
-          <p className="ov-item mt-7 max-w-5xl font-display text-[clamp(22px,3vw,40px)] font-medium leading-[1.22] tracking-[-0.02em] text-white text-balance">
-            {industry.intro}
-          </p>
-          <div className="ov-item mt-10 flex flex-wrap gap-4">
-            <a href="#/case-studies" className="btn-dark group !border !border-white/15 !bg-white/[0.04] !text-white hover:!bg-white/10">See the proof<IconArrowRight className="h-4 w-4" /></a>
-            <a href="#/contact" className="inline-flex items-center gap-2 px-2 py-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white">Talk to our team<IconArrowUpRight className="h-4 w-4 text-brand-red" /></a>
-          </div>
-        </Reveal>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_0.82fr] lg:gap-20">
+          <Reveal stagger=".ov-item" className="order-2 lg:order-1">
+            <span className="ov-item eyebrow-red">Sector overview</span>
+            <p className="ov-item mt-6 max-w-xl text-[15px] leading-[1.75] text-white/65 md:text-[16px]">
+              {industry.intro}
+            </p>
+            <div className="ov-item mt-9 flex flex-wrap gap-4">
+              <a href="#/case-studies" className="btn-dark group !border !border-white/15 !bg-white/[0.04] !text-white hover:!bg-white/10">See the proof<IconArrowRight className="h-4 w-4" /></a>
+              <a href="#/contact" className="inline-flex items-center gap-2 px-2 py-4 text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white">Talk to our team<IconArrowUpRight className="h-4 w-4 text-brand-red" /></a>
+            </div>
+          </Reveal>
+
+          <Reveal from="scale" className="order-1 lg:order-2">
+            <IndustryMotif slug={slug} />
+          </Reveal>
+        </div>
       </div>
     </section>
   )
@@ -610,7 +617,7 @@ function Clients({ industry }: { industry: IndustryData }) {
           theme="light"
           eyebrow="Representative clients"
           title={<>Trusted across <span className="text-gradient-brand">the sector.</span></>}
-          intro="A selection of the institutions Aptiva serves in this industry across the Middle East and Africa."
+          intro="A selection of the institutions Aptiva serves in this industry across global markets."
         />
         <Reveal stagger=".cl-cell" className="mt-14 flex flex-wrap gap-3">
           {industry.clients.map((slug) => (

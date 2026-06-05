@@ -39,3 +39,6 @@ build/
 # Test coverage
 coverage/
 .nyc_output/
+
+# Oracle SSH private key (never commit)
+oracle/*.key

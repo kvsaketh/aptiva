@@ -154,7 +154,7 @@ const servicesData: Record<string, Service> = {
     accent: 'blue',
     icon: IconCloud,
     overview:
-      'Regulated enterprises need infrastructure that is resilient, scalable, sovereign and secure by design. Our Cloud, Infrastructure & Cybersecurity practice delivers end-to-end infrastructure transformation — multi-cloud architecture and migration on AWS, Azure and Oracle Cloud, DevSecOps and Site Reliability Engineering for elite delivery, and zero-trust security with continuous vulnerability management. Every environment is architected to meet the stringent compliance and data-sovereignty requirements of banking, government and energy across the Middle East and Africa.',
+      'Regulated enterprises need infrastructure that is resilient, scalable, sovereign and secure by design. Our Cloud, Infrastructure & Cybersecurity practice delivers end-to-end infrastructure transformation — multi-cloud architecture and migration on AWS, Azure and Oracle Cloud, DevSecOps and Site Reliability Engineering for elite delivery, and zero-trust security with continuous vulnerability management. Every environment is architected to meet the stringent compliance and data-sovereignty requirements of banking, government and energy worldwide.',
     overviewPoints: [
       'Multi-cloud and sovereign architectures that honor data-residency requirements.',
       'DevSecOps pipelines that shift security left and ship safely at speed.',
@@ -304,7 +304,7 @@ const servicesData: Record<string, Service> = {
     accent: 'blue',
     icon: IconMonitor,
     overview:
-      'The modern workplace demands intelligent platforms that connect employees, knowledge and processes in one digital environment — especially for the distributed workforces common across the Middle East and Africa. Our Digital Workplace practice implements modern intranets, employee experience platforms and AI-powered knowledge management that lift productivity, deepen engagement and make institutional knowledge findable and reusable.',
+      'The modern workplace demands intelligent platforms that connect employees, knowledge and processes in one digital environment — especially for the distributed workforces common across global markets. Our Digital Workplace practice implements modern intranets, employee experience platforms and AI-powered knowledge management that lift productivity, deepen engagement and make institutional knowledge findable and reusable.',
     overviewPoints: [
       'Personalized, AI-powered intranets integrated with Microsoft 365 and Google Workspace.',
       'Unified employee experience: service delivery, communication and engagement in one place.',
@@ -550,7 +550,7 @@ const servicesData: Record<string, Service> = {
     accent: 'red',
     icon: IconUsers,
     overview:
-      'Finding the right technology talent is one of the biggest challenges enterprises face across the Middle East and Africa. Our Strategic Resource Partnership practice provides access to a certified, multilingual pool of consultants, engineers and architects through flexible engagement models — staff augmentation, dedicated teams and outcome-based delivery. With expertise across OpenText, UiPath, Oracle, Salesforce and 40+ other platforms, we help clients scale teams rapidly while maintaining quality and time-to-productivity.',
+      'Finding the right technology talent is one of the biggest challenges enterprises face worldwide. Our Strategic Resource Partnership practice provides access to a certified, multilingual pool of consultants, engineers and architects through flexible engagement models — staff augmentation, dedicated teams and outcome-based delivery. With expertise across OpenText, UiPath, Oracle, Salesforce and 40+ other platforms, we help clients scale teams rapidly while maintaining quality and time-to-productivity.',
     overviewPoints: [
       'AI-powered matching that aligns candidates to roles by skills, fit and performance data.',
       'Certified specialists fluent in Arabic, English, French and regional languages.',

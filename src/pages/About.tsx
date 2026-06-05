@@ -17,13 +17,13 @@ import {
 /* ────────────── DATA ────────────── */
 
 const timeline = [
-  { year: '2004', title: 'Founded in the UAE', desc: 'Aptiva is established in Dubai with a focused content-management and enterprise-capture practice — built to digitize the paper-heavy back offices of the region’s banks and ministries.' },
-  { year: '2009', title: 'Banking & government depth', desc: 'Early flagship engagements across UAE financial services and public sector establish a reputation for delivery in audited, compliance-first environments.' },
-  { year: '2013', title: 'Full-stack expansion', desc: 'The practice broadens from content into cloud, cybersecurity and data — the first step toward a single, accountable full-stack IT partnership.' },
-  { year: '2016', title: 'Africa entry', desc: 'On-the-ground delivery extends into East and West Africa — Kenya, Tanzania, Egypt and beyond — opening a genuine ME + Africa dual-market footprint.' },
-  { year: '2019', title: 'Proprietary IP portfolio', desc: 'A portfolio of purpose-built platforms takes shape — correspondence, archival, lending and procurement products that accelerate delivery and create switching cost.' },
-  { year: '2021', title: 'GenAI & automation first-mover', desc: 'Aptiva moves early on LLMs, RAG and intelligent automation — putting production AI into regulated workflows before the market caught up.' },
-  { year: 'Today', title: 'Agentic AI at enterprise scale', desc: '1,200+ specialists across 16 countries deploy autonomous agents, custom models and intelligent automation for 50+ enterprise clients.' },
+  { year: '2017', title: 'Founded for the AI era', desc: 'Aptiva Technologies is established as a digital-native IT and transformation partner — purpose-built to close the technology gap for banks, governments and enterprises worldwide.' },
+  { year: '2018', title: 'Banking & government depth', desc: 'Early flagship engagements across financial services and public sector establish a reputation for delivery in audited, compliance-first environments.' },
+  { year: '2019', title: 'Full-stack expansion', desc: 'The practice broadens from content into cloud, cybersecurity and data — the first step toward a single, accountable full-stack IT partnership.' },
+  { year: '2020', title: 'Global footprint', desc: 'On-the-ground delivery extends across new markets — opening offices and delivery teams that put Aptiva close to clients, regulators and realities worldwide.' },
+  { year: '2021', title: 'Proprietary IP portfolio', desc: 'A portfolio of purpose-built platforms takes shape — correspondence, archival, lending and procurement products that accelerate delivery and create switching cost.' },
+  { year: '2022', title: 'GenAI & automation first-mover', desc: 'Aptiva moves early on LLMs, RAG and intelligent automation — putting production AI into regulated workflows before the market caught up.' },
+  { year: 'Today', title: 'Agentic AI at enterprise scale', desc: 'Specialist teams across 7 global locations deploy autonomous agents, custom models and intelligent automation for 50+ enterprise clients.' },
 ]
 
 const principles = [
@@ -31,7 +31,7 @@ const principles = [
   { icon: IconRocket, title: 'Prove value before scale', desc: 'Our land-and-expand model starts with one focused, measurable outcome — then compounds across the enterprise as confidence grows. Every step earns the next.' },
   { icon: IconBrain, title: 'AI in production, not theory', desc: 'We treat Agentic AI and GenAI as operational systems: governed, observable and wired into real processes — autonomously executing work, not just demonstrating it.' },
   { icon: IconUsers, title: 'One accountable partner', desc: 'Content, cloud, security, data and AI under a single relationship. No finger-pointing across vendors — one team owns the outcome end to end.' },
-  { icon: IconGlobe, title: 'Regional fluency, global rigor', desc: 'Two decades on the ground across the Middle East and Africa, paired with delivery standards and engineering discipline that meet any global benchmark.' },
+  { icon: IconGlobe, title: 'Global reach, global rigor', desc: 'On the ground across global markets since 2017, paired with delivery standards and engineering discipline that meet any global benchmark.' },
   { icon: IconTrendingUp, title: 'Outcomes over outputs', desc: 'We measure success in cycle-time, cost, risk and revenue — the metrics our clients are measured on — not in tickets closed or hours billed.' },
 ]
 
@@ -41,7 +41,7 @@ const differentiators = [
   { num: '03', icon: IconShield, title: 'Regulated-Industry DNA', desc: 'Deep, audited expertise in banking, government, telecom, energy and real estate — where compliance is non-negotiable.' },
   { num: '04', icon: IconRocket, title: 'GenAI & Agentic First-Mover', desc: 'Pioneers in enterprise AI — LLMs, agentic workflows, custom models and RAG, deployed in production before the market caught up.' },
   { num: '05', icon: IconAward, title: 'Multi-OEM Independence', desc: 'Vendor-agnostic recommendations backed by 45 strategic partnerships including OpenText, UiPath, Oracle and Microsoft.' },
-  { num: '06', icon: IconGlobe, title: 'ME + Africa Dual-Market', desc: 'Two decades of regional expertise across UAE, KSA, Kenya, Oman, Egypt and beyond — 16 countries and counting.' },
+  { num: '06', icon: IconGlobe, title: 'Global Multi-Market', desc: 'Global expertise since 2017 across the UAE, KSA, Egypt, Kenya, Oman and beyond — 7 global locations and counting.' },
   { num: '07', icon: IconUsers, title: 'Boutique Agility at Scale', desc: 'Boutique responsiveness with enterprise delivery muscle — the speed of a specialist with the depth of a systems integrator.' },
   { num: '08', icon: IconZap, title: '11-Strong Solution Portfolio', desc: 'Proprietary IP that creates switching cost and recurring revenue — from Corroflow to Gazelens.' },
 ]
@@ -52,10 +52,10 @@ const aiCapabilities = [
 ]
 
 const regions = [
-  { icon: IconBuilding, name: 'United Arab Emirates', detail: 'Headquarters & primary delivery hub — banking, government and energy.' },
+  { icon: IconBuilding, name: 'United Arab Emirates', detail: 'Global HQ & primary delivery hub — banking, government and energy.' },
   { icon: IconLandmark, name: 'Saudi Arabia', detail: 'Vision-2030 aligned transformation across public sector and financial services.' },
-  { icon: IconGlobe, name: 'East Africa', detail: 'Kenya, Tanzania and the wider region — banking modernization and digital services.' },
-  { icon: IconAntenna, name: 'North & West Africa', detail: 'Egypt and beyond — telecom, content intelligence and citizen-facing platforms.' },
+  { icon: IconGlobe, name: 'Egypt', detail: 'Cairo delivery centre — telecom, content intelligence and citizen-facing platforms.' },
+  { icon: IconAntenna, name: 'Kenya & Oman', detail: 'Nairobi and Muscat delivery teams — banking modernization and digital services across markets.' },
 ]
 
 const LINKEDIN_PATH = 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'
@@ -68,7 +68,7 @@ function peekInitials(name: string) {
 const leadershipPeek = [
   { name: 'Swamy VLN Boyapati', role: 'Managing Director & CEO', linkedin: 'https://www.linkedin.com/in/swamyvlnboyapati/', glow: 'red' as const },
   { name: 'George Avvaru', role: 'Vice President, Delivery & Operations', linkedin: 'https://www.linkedin.com/in/georgeavvaru/', glow: 'blue' as const },
-  { name: 'Bader Maktabi', role: 'Director, Middle East Operations', linkedin: 'https://www.linkedin.com/in/bader-maktabi-bb49914b/', glow: 'red' as const },
+  { name: 'Bader Maktabi', role: 'Director, Operations', linkedin: 'https://www.linkedin.com/in/bader-maktabi-bb49914b/', glow: 'red' as const },
 ]
 
 /* ────────────── PAGE ────────────── */
@@ -81,13 +81,13 @@ export default function About() {
       <PageHeader
         label="About Aptiva"
         title="Engineered for the AI era"
-        subtitle="A full-stack IT and digital-transformation partner for the Middle East and Africa — pairing two decades of regulated-industry delivery with a first-mover edge in Agentic AI and intelligent automation."
+        subtitle="A full-stack IT and digital-transformation partner for enterprises worldwide — pairing regulated-industry delivery since 2017 with a first-mover edge in Agentic AI and intelligent automation."
         bgImage="/about-hero.jpg"
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'About' }]}
         stats={[
-          { value: '~20 yrs', label: 'Of regional delivery' },
-          { value: '16', label: 'Countries, two continents' },
-          { value: '1,200+', label: 'Engineers & specialists' },
+          { value: '2017', label: 'Founded' },
+          { value: '7', label: 'Global locations' },
+          { value: '45', label: 'Strategic partnerships' },
           { value: '11', label: 'Proprietary solutions' },
         ]}
       />
@@ -128,15 +128,15 @@ function Story() {
             />
             <Reveal stagger=".story-p" className="mt-8 space-y-5">
               <p className="story-p lead text-ink-900/70">
-                Aptiva Technologies was founded on a singular conviction: that the institutions powering the Middle East and Africa
+                Aptiva Technologies was founded on a singular conviction: that the institutions powering the global economy
                 deserve a technology partner built for their reality — not a legacy systems integrator that bolted on digital
                 capabilities after the fact. We are a digital-native enterprise, purpose-built from day one to close the technology
-                gap across two of the world’s fastest-evolving regions.
+                gap across the world’s fastest-evolving markets.
               </p>
               <p className="story-p text-[15.5px] leading-relaxed text-ink-900/65">
-                Over nearly two decades we have grown from a focused content-management practice into a full-stack IT and
-                digital-transformation partner — delivering across six core pillars and six specialized practices, backed by 1,200+
-                engineers, 45 strategic partnerships and 11 proprietary enterprise solutions. Our work spans the most demanding,
+                Since our 2017 founding we have grown into a full-stack IT and
+                digital-transformation partner — delivering across six core pillars and six specialized practices, backed by
+                specialist engineering teams, 45 strategic partnerships and 11 proprietary enterprise solutions. Our work spans the most demanding,
                 regulated environments on earth: central banks and tier-one lenders, national telecom operators, government
                 ministries and the energy infrastructure that keeps economies running.
               </p>
@@ -243,7 +243,7 @@ function Timeline() {
       <div className="container-xl section-y relative z-10">
         <SectionHeading
           theme="light"
-          eyebrow="Two decades in"
+          eyebrow="Since 2017"
           counter="2004 → today"
           title={<>From content practice to <span className="text-gradient-brand">Agentic AI leader.</span></>}
           intro="A steady, compounding expansion — broadening capability and geography while never losing the regulated-industry discipline we were built on."
@@ -380,8 +380,8 @@ function Global() {
             <SectionHeading
               theme="light"
               eyebrow="Global presence"
-              title={<>A genuine <span className="text-gradient-brand">ME + Africa</span> footprint.</>}
-              intro="Sixteen countries across two continents — not flags on a map, but on-the-ground delivery teams who understand the regulators, languages and realities of each market."
+              title={<>A genuine <span className="text-gradient-brand">global</span> footprint.</>}
+              intro="Seven offices across global markets — not flags on a map, but on-the-ground delivery teams who understand the regulators, languages and realities of each market."
             />
             <Reveal className="mt-8">
               <a href="#/contact" className="btn-dark group">Find your nearest team<IconArrowRight className="h-4 w-4" /></a>

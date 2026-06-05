@@ -160,8 +160,8 @@ const proofPoints = [
 ]
 
 const aggregateStats = [
-  { to: 27, suffix: '+', label: 'Enterprise engagements delivered across MEA' },
-  { to: 16, label: 'Countries spanning two continents' },
+  { to: 27, suffix: '+', label: 'Enterprise engagements delivered worldwide' },
+  { to: 7, label: 'Global locations worldwide' },
   { to: 50, suffix: 'K+', label: 'Man-hours saved per year through automation' },
   { to: 99.9, suffix: '%', decimals: 1, label: 'Average uptime across managed platforms' },
 ]
@@ -188,7 +188,7 @@ export default function CaseStudies() {
         crumbs={[{ label: 'Home', href: '#/' }, { label: 'Case Studies' }]}
         stats={[
           { value: '27+', label: 'Engagements' },
-          { value: '16', label: 'Countries' },
+          { value: '7', label: 'Global locations' },
           { value: '9yr', label: 'Longest Partnership' },
           { value: '50+', label: 'Enterprise Clients' },
         ]}
