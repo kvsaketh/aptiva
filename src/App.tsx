@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { lazy, Suspense, useEffect } from 'react'
 import Layout from './components/layout/Layout'
 import PageLoader from './components/PageLoader'
+import DesignLab from './components/DesignLab'
 
 // Home loads eagerly (above-the-fold landing); the rest are split into
 // per-route chunks so first paint ships only what it needs.
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+      {import.meta.env.DEV && <DesignLab />}
     </Layout>
   )
 }

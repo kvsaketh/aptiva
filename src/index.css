@@ -33,11 +33,17 @@
     --ring: 0 72% 51%;
     --radius: 0px;
 
+    /* DesignLab-tunable typography (live-editable via the in-app panel) */
+    --font-display: "Space Grotesk";
+    --font-body: "Satoshi";
+    --display-scale: 0.96;        /* master multiplier on heading sizes */
+    --display-tracking: -0.005em; /* heading letter-spacing */
+
     /* brand thread */
-    --brand-red: #e5322d;
-    --brand-red-deep: #b3120f;
-    --brand-blue: #2f6bff;
-    --brand-blue-deep: #1742b8;
+    --brand-red: #ff0800;
+    --brand-red-deep: #940500;
+    --brand-blue: #5283ff;
+    --brand-blue-deep: #304c94;
     --brand-violet: #7c3aed;
 
     /* ink surfaces (dark, blue undertone) */
@@ -53,14 +59,14 @@
     --paper-line: #e7e9f0;
 
     /* signature gradients — two distinct families (no muddy red↔blue mix) */
-    /* RED: rose highlight → brand red → deep crimson */
-    --grad-red: linear-gradient(125deg, #ff7d9d 0%, #f0455c 32%, #e5322d 58%, #9e1420 100%);
-    --grad-red-soft: linear-gradient(125deg, #ff9bb1 0%, #ff5a6e 55%, #d8273a 100%);
-    /* BLUE: sky blue → brand blue → indigo violet */
-    --grad-blue: linear-gradient(125deg, #6fb0ff 0%, #2f6bff 42%, #5b46f0 74%, #7c3aed 100%);
-    --grad-blue-soft: linear-gradient(125deg, #8fc2ff 0%, #5b86ff 55%, #7c5cf5 100%);
-    /* hairline-only decorative sweep (used sparingly, thin) */
-    --grad-brand: linear-gradient(90deg, #e5322d 0%, #7c3aed 52%, #2f6bff 100%);
+    /* RED: bright tint → vivid brand red → deep red */
+    --grad-red: linear-gradient(125deg, #ff706b 0%, #ff0800 52%, #940500 100%);
+    --grad-red-soft: linear-gradient(125deg, #ff8480 0%, #ff211a 100%);
+    /* BLUE: light tint → brand blue → deep blue */
+    --grad-blue: linear-gradient(125deg, #9bb7ff 0%, #5283ff 52%, #304c94 100%);
+    --grad-blue-soft: linear-gradient(125deg, #a9c1ff 0%, #638fff 100%);
+    /* brand sweep (red → blue) */
+    --grad-brand: linear-gradient(90deg, #ff0800 0%, #4a76e6 100%);
   }
 
   * {
@@ -74,7 +80,7 @@
   }
 
   body {
-    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body), 'Satoshi', system-ui, -apple-system, sans-serif;
     @apply text-white antialiased;
     background-color: var(--ink-900);
     overflow-x: hidden;
@@ -82,9 +88,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Clash Display', 'Satoshi', system-ui, sans-serif;
+    font-family: var(--font-display), 'Clash Display', 'Satoshi', system-ui, sans-serif;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--display-tracking);
   }
 
   ::selection {
@@ -184,10 +190,10 @@
   .section-y-sm { padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(56px, 7vw, 104px); }
   .container-xl { @apply max-w-[1320px] mx-auto px-6 md:px-10 lg:px-20 xl:px-24; }
 
-  /* ---- Display type scale ---- */
-  .display-1 { font-size: clamp(46px, 7.2vw, 104px); line-height: 0.97; letter-spacing: -0.045em; font-weight: 600; }
-  .display-2 { font-size: clamp(34px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; }
-  .display-3 { font-size: clamp(26px, 2.8vw, 40px); line-height: 1.08; letter-spacing: -0.03em; font-weight: 600; }
+  /* ---- Display type scale (scaled live by --display-scale) ---- */
+  .display-1 { font-size: calc(clamp(46px, 7.2vw, 104px) * var(--display-scale)); line-height: 0.99; letter-spacing: -0.045em; font-weight: 600; }
+  .display-2 { font-size: calc(clamp(34px, 4.6vw, 68px) * var(--display-scale)); line-height: 1.04; letter-spacing: -0.035em; font-weight: 600; }
+  .display-3 { font-size: calc(clamp(26px, 2.8vw, 40px) * var(--display-scale)); line-height: 1.1; letter-spacing: -0.03em; font-weight: 600; }
   .lead { font-size: clamp(17px, 1.4vw, 21px); line-height: 1.6; }
 
   /* ---- Buttons ---- */

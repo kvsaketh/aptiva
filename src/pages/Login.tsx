@@ -64,7 +64,7 @@ export default function Login() {
 
       <div className="container-xl relative z-10 flex justify-center">
         <div className="border-gradient-blue w-full max-w-md border border-white/10 bg-ink-900/75 p-8 backdrop-blur-xl md:p-10">
-          <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="mx-auto h-[2.12rem] w-auto object-contain" />
+          <img src="/logo-dark-bg.png" alt="Aptiva Technologies" className="mx-auto h-[2.65rem] w-auto object-contain" />
 
           <div className="mt-7 text-center">
             <span className="eyebrow-blue justify-center">Secure access</span>

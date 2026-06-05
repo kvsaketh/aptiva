@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Clash Display"', 'Satoshi', 'system-ui', 'sans-serif'],
-        sans: ['Satoshi', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['var(--font-display)', '"Clash Display"', 'Satoshi', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)', 'Satoshi', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
@@ -28,10 +28,10 @@ module.exports = {
           line: "#e7e9f0",
         },
         brand: {
-          red: "#e5322d",
-          "red-deep": "#b3120f",
-          blue: "#2f6bff",
-          "blue-deep": "#1742b8",
+          red: "#ff0800",
+          "red-deep": "#940500",
+          blue: "#5283ff",
+          "blue-deep": "#304c94",
           violet: "#7c3aed",
         },
         red: {
@@ -130,11 +130,11 @@ module.exports = {
         "glow-blue": "0 18px 50px -20px rgba(47,107,255,0.55)",
       },
       backgroundImage: {
-        "grad-red": "linear-gradient(125deg, #ff7d9d 0%, #f0455c 32%, #e5322d 58%, #9e1420 100%)",
-        "grad-red-soft": "linear-gradient(125deg, #ff9bb1 0%, #ff5a6e 55%, #d8273a 100%)",
-        "grad-blue": "linear-gradient(125deg, #6fb0ff 0%, #2f6bff 42%, #5b46f0 74%, #7c3aed 100%)",
-        "grad-blue-soft": "linear-gradient(125deg, #8fc2ff 0%, #5b86ff 55%, #7c5cf5 100%)",
-        "grad-brand": "linear-gradient(90deg, #e5322d 0%, #7c3aed 52%, #2f6bff 100%)",
+        "grad-red": "linear-gradient(125deg, #ff706b 0%, #ff0800 52%, #940500 100%)",
+        "grad-red-soft": "linear-gradient(125deg, #ff8480 0%, #ff211a 100%)",
+        "grad-blue": "linear-gradient(125deg, #9bb7ff 0%, #5283ff 52%, #304c94 100%)",
+        "grad-blue-soft": "linear-gradient(125deg, #a9c1ff 0%, #638fff 100%)",
+        "grad-brand": "linear-gradient(90deg, #ff0800 0%, #4a76e6 100%)",
       },
       maxWidth: {
         "screen-2xl": "1320px",
