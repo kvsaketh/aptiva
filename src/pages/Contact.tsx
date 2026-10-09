@@ -24,12 +24,12 @@ const channels = [
 
 const offices = [
   {
-    city: 'Ras Al-Khaimah', tag: 'Global HQ', img: '/about-office.jpg',
-    lines: ['Aptiva Technologies FZE', 'A4-332, Al Hamra Ind. Zone FZ', 'P.O. Box 82264, Ras Al-Khaimah, UAE'],
+    city: 'Dubai', tag: 'Global HQ', img: '/about-global.jpg',
+    lines: ['Aptiva Technologies LLC', 'Suite 504, Platinum Business Centre', 'Al Nahda 2, P.O. Box 82264, Dubai, UAE'],
   },
   {
-    city: 'Dubai', tag: 'Regional Office', img: '/about-global.jpg',
-    lines: ['Suite 504, Platinum Business Centre', 'Al Nahda 2', 'P.O. Box 82264, Dubai, UAE'],
+    city: 'Ras Al-Khaimah', tag: 'Regional Office', img: '/about-office.jpg',
+    lines: ['Aptiva Technologies FZE', 'A4-332, Al Hamra Ind. Zone FZ', 'P.O. Box 82264, Ras Al-Khaimah, UAE'],
   },
   {
     city: 'Abu Dhabi', tag: 'UAE', img: '/industry-government.jpg',
@@ -344,11 +344,11 @@ function Offices() {
             <KineticBackdrop variant="flow" color="blue" opacity={0.35} className="left-1/2 w-[150%] -translate-x-1/2" />
             <div className="relative z-10">
               <span className="eyebrow-blue">Headquarters</span>
-              <h3 className="mt-4 font-display text-2xl font-semibold text-white">Al Hamra Industrial Zone, Ras Al-Khaimah</h3>
+              <h3 className="mt-4 font-display text-2xl font-semibold text-white">Platinum Business Centre, Al Nahda 2, Dubai</h3>
               <p className="mt-3 max-w-xl text-[14px] leading-relaxed text-white/55">
                 Our home base in the UAE — engineering, delivery and managed-services teams operating across the region from a single accountable hub.
               </p>
-              <a href="https://maps.google.com/?q=Al+Hamra+Industrial+Zone+Ras+Al+Khaimah" target="_blank" rel="noopener noreferrer" className="btn-ghost group mt-6 inline-flex">
+              <a href="https://maps.google.com/?q=Platinum+Business+Centre+Al+Nahda+2+Dubai" target="_blank" rel="noopener noreferrer" className="btn-ghost group mt-6 inline-flex">
                 Open in Maps<IconArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </div>
