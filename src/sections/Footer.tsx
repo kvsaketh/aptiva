@@ -129,12 +129,12 @@ export default function Footer() {
               <h4 className="mb-5 font-mono text-[10.5px] font-semibold uppercase tracking-[0.18em] text-white/35">Offices</h4>
               <div className="space-y-4 text-[13px] leading-relaxed text-white/55">
                 <div>
-                  <span className="block font-semibold text-white/85">Ras Al-Khaimah · HQ</span>
-                  A4-332, Al Hamra Ind. Zone FZ<br />P.O. Box 82264, RAK, UAE
+                  <span className="block font-semibold text-white/85">Dubai · HQ</span>
+                  Suite 504, Platinum Business Centre<br />Al Nahda 2, Dubai, UAE
                 </div>
                 <div>
-                  <span className="block font-semibold text-white/85">Dubai</span>
-                  Suite 504, Platinum Business Centre<br />Al Nahda 2, Dubai, UAE
+                  <span className="block font-semibold text-white/85">Ras Al-Khaimah</span>
+                  A4-332, Al Hamra Ind. Zone FZ<br />P.O. Box 82264, RAK, UAE
                 </div>
               </div>
             </div>
