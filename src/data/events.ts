@@ -48,7 +48,7 @@ export const events: AptivaEvent[] = [
     dateLabel: '2 Nov 2026',
     venue: 'Museum of the Future',
     city: 'Dubai',
-    roles: ['Sponsor', 'Booth', 'Speaking'],
+    roles: ['Sponsor', 'Booth'],
     details: ['Partner pod in the FUSION foyer, next to the Agentic Lab'],
     summary:
       'Agentic automation in production: how Aptiva designs, builds and runs UiPath agents and RPA for banks, government and telecom across the region.',

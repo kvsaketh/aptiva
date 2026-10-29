@@ -58,10 +58,10 @@ export async function logOut() {
 
 /** Current Firebase ID token (auto-refreshed by the SDK), or null. */
 export async function currentIdToken(): Promise<string | null> {
-  const u: User | null = getFirebaseAuth().currentUser
-  if (!u) return null
+  // Auth misconfigured or unavailable → anonymous request, so public pages keep working.
   try {
-    return await u.getIdToken()
+    const u: User | null = getFirebaseAuth().currentUser
+    return u ? await u.getIdToken() : null
   } catch {
     return null
   }

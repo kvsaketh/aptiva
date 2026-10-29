@@ -8,6 +8,7 @@ import TiltCard from '@/components/kit/TiltCard'
 import Marquee from '@/components/kit/Marquee'
 import CTASection from '@/components/kit/CTASection'
 import { IconArrowRight, IconArrowUpRight, IconBrain, IconSparkle } from '@/components/Icons'
+import { trpc } from '@/providers/trpc'
 
 /* ──────────────────────────────────────────────────────────────
    TYPES + DATA  (real existing entries preserved, expanded)
@@ -24,6 +25,7 @@ type Article = {
   author: string
   cover: string
   featured?: boolean
+  href?: string
 }
 
 const articles: Article[] = [
@@ -187,7 +189,7 @@ const articles: Article[] = [
 ]
 
 /* Topic filter chips (visual). */
-const topics = ['All', 'Agentic AI', 'GenAI', 'Intelligent Automation', 'Cybersecurity', 'Cloud', 'Digital Transformation']
+const topics = ['All', 'Agentic AI', 'GenAI', 'Automation', 'Intelligent Automation', 'Content Intelligence', 'Customer Experience', 'Governance', 'Cloud & Security', 'Managed Services', 'Cybersecurity', 'Cloud', 'Digital Transformation']
 
 /* Popular topics with article counts. */
 const popularTopics = [
@@ -210,14 +212,25 @@ export default function Insights() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [])
 
-  const featured = articles.find((a) => a.featured) as Article
-  const featuredRail = articles.filter((a) => a.featured && a.id !== featured.id)
+  // Scheduled articles come from the server, which only returns ones already published.
+  const { data: live = [] } = trpc.content.articles.useQuery()
+  const all = useMemo<Article[]>(() => [
+    ...live.map((a, i) => ({
+      id: a.slug, title: a.title, category: a.category, tags: a.tags, excerpt: a.excerpt, readTime: a.readTime,
+      author: a.author, cover: a.cover, href: `#/insights/${a.slug}`, featured: i < 3,
+      date: new Date(a.publishAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+    })),
+    ...articles.map((a) => (live.length ? { ...a, featured: false } : a)),
+  ], [live])
+
+  const featured = all.find((a) => a.featured) as Article
+  const featuredRail = all.filter((a) => a.featured && a.id !== featured.id)
 
   const filtered = useMemo(() => {
-    const rest = articles.filter((a) => a.id !== featured.id)
+    const rest = all.filter((a) => a.id !== featured.id)
     if (topic === 'All') return rest
     return rest.filter((a) => a.category === topic || a.tags.includes(topic))
-  }, [topic, featured.id])
+  }, [topic, featured.id, all])
 
   return (
     <div>
@@ -266,7 +279,7 @@ function FeaturedHero({ article, rail }: { article: Article; rail: Article[] }) 
         </Reveal>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <TiltCard glow="red" max={5} href="#/insights" className="group lg:col-span-8">
+          <TiltCard glow="red" max={5} href={article.href ?? '#/insights'} className="group lg:col-span-8">
             <article className="card-ink relative flex min-h-[420px] flex-col justify-end overflow-hidden p-8 md:p-10">
               <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${article.cover})` }} aria-hidden />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/80 to-ink-900/30" aria-hidden />
@@ -292,7 +305,7 @@ function FeaturedHero({ article, rail }: { article: Article; rail: Article[] }) 
 
           <Reveal stagger=".rail-card" className="flex flex-col gap-6 lg:col-span-4">
             {rail.map((a) => (
-              <a key={a.id} href="#/insights" className="rail-card card-ink group flex flex-1 flex-col p-6">
+              <a key={a.id} href={a.href ?? '#/insights'} className="rail-card card-ink group flex flex-1 flex-col p-6">
                 <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-white/45">
                   <span className="text-brand-red">{a.category}</span>
                   <span className="text-white/25">·</span>
@@ -345,7 +358,7 @@ function ArticleGrid({ topic, setTopic, items }: { topic: string; setTopic: (t: 
         {items.length > 0 ? (
           <Reveal stagger=".grid-card" key={topic} className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {items.map((a) => (
-              <TiltCard key={a.id} glow="red" max={6} href="#/insights" className="grid-card card-paper group flex flex-col overflow-hidden">
+              <TiltCard key={a.id} glow="red" max={6} href={a.href ?? '#/insights'} className="grid-card card-paper group flex flex-col overflow-hidden">
                 <div className="relative h-44 overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url(${a.cover})` }} aria-hidden />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink-900/70 to-transparent" aria-hidden />

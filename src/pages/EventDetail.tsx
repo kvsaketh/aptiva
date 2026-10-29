@@ -5,13 +5,16 @@ import { Aurora, GridBackdrop, Grain } from '@/components/motion/Atmosphere'
 import { IconArrowRight, IconArrowUpRight } from '@/components/Icons'
 import { EventVideo, RoleChips, useNow } from '@/components/events/EventPromos'
 import { daysLabel, daysUntil, events, isVideoLive, meetingHref } from '@/data/events'
+import { trpc } from '@/providers/trpc'
 import NotFound from './NotFound'
 
 export default function EventDetail() {
   const { slug } = useParams()
   const now = useNow()
   const e = events.find((x) => x.id === slug)
+  const { data: articles = [] } = trpc.content.articles.useQuery()
   if (!e) return <NotFound />
+  const related = articles.filter((a) => a.eventId === e.id)
 
   const dated = !!e.start
   const ended = !!e.end && new Date(e.end).getTime() < now
@@ -116,6 +119,24 @@ export default function EventDetail() {
                 <a href={e.url} target="_blank" rel="noopener noreferrer" className="text-[#ff7d8e] hover:text-white">See the event website →</a>
               </p>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* Related articles (only ones already published) */}
+      {related.length > 0 && (
+        <section className="surface-ink-flat relative border-t border-white/10">
+          <div className="container-xl section-y-sm">
+            <span className="eyebrow-red">Related insights</span>
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              {related.map((a) => (
+                <a key={a.slug} href={`#/insights/${a.slug}`} className="group border border-white/10 bg-white/[0.03] p-6 hover:bg-white/[0.06]">
+                  <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/45">{a.category} · {a.readTime}</p>
+                  <p className="mt-2 font-display text-[19px] font-semibold leading-snug text-white group-hover:text-[#ff7d8e]">{a.title}</p>
+                  <p className="mt-2 line-clamp-2 text-[14px] text-white/60">{a.excerpt}</p>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
       )}

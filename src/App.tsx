@@ -22,6 +22,7 @@ const Partners = lazy(() => import('./pages/Partners'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'))
 const Insights = lazy(() => import('./pages/Insights'))
+const ArticleDetail = lazy(() => import('./pages/ArticleDetail'))
 const Events = lazy(() => import('./pages/Events'))
 const EventDetail = lazy(() => import('./pages/EventDetail'))
 const Leadership = lazy(() => import('./pages/Leadership'))
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/:slug" element={<ArticleDetail />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/leadership" element={<Leadership />} />
