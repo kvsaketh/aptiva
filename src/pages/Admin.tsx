@@ -19,7 +19,7 @@ function TabButton({ label, active, onClick }: { label: string; active: boolean;
 
 export default function Admin() {
   const { user, isLoading: authLoading } = useAuth()
-  const [tab, setTab] = useState<'clients' | 'partners' | 'images'>('clients')
+  const [tab, setTab] = useState<'enquiries' | 'clients' | 'partners' | 'images'>('enquiries')
 
   // Client logos
   const { data: clientLogos, refetch: refetchClients } = trpc.media.clientLogo.listAll.useQuery(undefined, { enabled: tab === 'clients' })
@@ -34,6 +34,8 @@ export default function Admin() {
   const deletePartner = trpc.media.partnerLogo.delete.useMutation({ onSuccess: () => refetchPartners() })
 
   // Site images
+  const { data: enquiryList } = trpc.contact.list.useQuery(undefined, { enabled: tab === 'enquiries' })
+
   const { data: siteImages, refetch: refetchImages } = trpc.media.siteImage.list.useQuery(undefined, { enabled: tab === 'images' })
   const createImage = trpc.media.siteImage.create.useMutation({ onSuccess: () => refetchImages() })
   const deleteImage = trpc.media.siteImage.delete.useMutation({ onSuccess: () => refetchImages() })
@@ -55,10 +57,36 @@ export default function Admin() {
 
         {/* Tabs */}
         <div className="flex gap-2 mb-8 border-b border-white/[0.15]">
+          <TabButton label="Enquiries" active={tab === 'enquiries'} onClick={() => setTab('enquiries')} />
           <TabButton label="Client Logos" active={tab === 'clients'} onClick={() => setTab('clients')} />
           <TabButton label="Partner Logos" active={tab === 'partners'} onClick={() => setTab('partners')} />
           <TabButton label="Site Images" active={tab === 'images'} onClick={() => setTab('images')} />
         </div>
+
+        {/* ─── ENQUIRIES TAB ─── */}
+        {tab === 'enquiries' && (
+          <div>
+            <h2 className="text-white font-semibold text-xl mb-4">Enquiries ({enquiryList?.length || 0})</h2>
+            <div className="space-y-3">
+              {enquiryList?.map((q) => (
+                <div key={q.id} className="p-5 bg-white/[0.06] border border-white/[0.15]">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <p className="text-white font-medium">{q.name}{q.company && <span className="text-white/60"> · {q.company}</span>}</p>
+                    <span className="text-white/50 text-xs">{new Date(q.createdAt).toLocaleString('en-GB')}</span>
+                  </div>
+                  <p className="mt-1 text-sm">
+                    <a href={`mailto:${q.email}`} className="text-blue-400 hover:underline">{q.email}</a>
+                    {q.phone && <span className="text-white/60"> · {q.phone}</span>}
+                    {q.interest && <span className="ml-2 bg-white/[0.08] text-white/80 text-[10px] uppercase tracking-[0.1em] px-2 py-0.5">{q.interest}</span>}
+                    {q.eventId && <span className="ml-2 bg-blue-600/20 text-blue-400 text-[10px] uppercase tracking-[0.1em] px-2 py-0.5">{q.eventId}</span>}
+                  </p>
+                  <p className="mt-3 whitespace-pre-wrap text-white/80 text-sm">{q.message}</p>
+                </div>
+              ))}
+              {enquiryList?.length === 0 && <p className="text-white/60 text-sm">No enquiries yet.</p>}
+            </div>
+          </div>
+        )}
 
         {/* ─── CLIENT LOGOS TAB ─── */}
         {tab === 'clients' && (

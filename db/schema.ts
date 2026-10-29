@@ -83,3 +83,18 @@ export const siteImages = mysqlTable("site_images", {
 
 export type SiteImage = typeof siteImages.$inferSelect;
 export type InsertSiteImage = typeof siteImages.$inferInsert;
+
+// ─── ENQUIRIES (contact form) ───
+export const enquiries = mysqlTable("enquiries", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 200 }).notNull(),
+  company: varchar("company", { length: 200 }),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 50 }),
+  interest: varchar("interest", { length: 100 }),
+  message: text("message").notNull(),
+  eventId: varchar("event_id", { length: 100 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type Enquiry = typeof enquiries.$inferSelect;

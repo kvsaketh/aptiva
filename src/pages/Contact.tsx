@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { events } from '@/data/events'
+import { trpc } from '@/providers/trpc'
 import PageHeader from '../components/layout/PageHeader'
 import Reveal from '../components/motion/Reveal'
 import SectionHeading from '../components/motion/SectionHeading'
@@ -123,12 +124,18 @@ function PrimaryContact() {
   const ev = events.find((e) => e.id === params.get('event'))
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', interest: '', message: ev ? `I'd like to book a meeting with the Aptiva team at ${ev.name} (${ev.dateLabel}).` : '' })
   const [submitted, setSubmitted] = useState(false)
+  const [honeypot, setHoneypot] = useState('')
+  const send = trpc.contact.submit.useMutation({ onSuccess: () => setSubmitted(true) })
 
   const field = 'w-full border border-white/12 bg-white/[0.03] px-4 py-3.5 text-[14px] text-white placeholder:text-white/35 outline-none transition-all duration-200 focus:border-brand-red/70 focus:bg-white/[0.05] focus:ring-1 focus:ring-brand-red/30'
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    send.mutate({
+      name: form.name, email: form.email, message: form.message,
+      company: form.company || undefined, phone: form.phone || undefined, interest: form.interest || undefined,
+      eventId: ev?.id, website: honeypot || undefined,
+    })
   }
 
   return (
@@ -166,6 +173,8 @@ function PrimaryContact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Hidden from people; bots that fill every field get rejected. */}
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} className="absolute -left-[9999px] h-0 w-0 opacity-0" />
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                     <label className="block">
                       <span className="mb-2 block font-mono text-[10.5px] uppercase tracking-[0.16em] text-white/45">Full name *</span>
@@ -200,7 +209,12 @@ function PrimaryContact() {
                     <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your objective, timeline and any constraints…" className={`${field} resize-none`} />
                   </label>
                   <div className="flex flex-wrap items-center gap-4 pt-1">
-                    <button type="submit" className="btn-primary"><span>Send message</span><IconArrowRight className="relative z-10 h-4 w-4" /></button>
+                    {send.error && (
+                    <p role="alert" className="mb-4 text-[14px] text-[#ff7d8e]">
+                      {send.error.data?.code === 'TOO_MANY_REQUESTS' ? send.error.message : 'Sorry, your message could not be sent. Please try again, or email sales@aptivacorp.ae.'}
+                    </p>
+                  )}
+                  <button type="submit" disabled={send.isPending} className="btn-primary disabled:opacity-60"><span>{send.isPending ? 'Sending…' : 'Send message'}</span><IconArrowRight className="relative z-10 h-4 w-4" /></button>
                     <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-white/40">
                       <IconShield className="h-3.5 w-3.5 text-brand-red" /> Your details stay confidential
                     </span>
