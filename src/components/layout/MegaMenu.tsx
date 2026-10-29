@@ -143,6 +143,7 @@ const navItems = [
   { key: 'solutions', label: 'Solutions', href: '#/solutions' },
   { key: 'industries', label: 'Industries', href: '#/industries' },
   { key: 'company', label: 'Company', href: '#/about' },
+  { key: 'events', label: 'Events', href: '#/events' },
 ]
 
 /* ────────────── COMPONENT ────────────── */
@@ -214,7 +215,8 @@ export default function MegaMenu() {
     <>
       <nav
         ref={navRef}
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${solid ? 'glass-nav' : 'bg-transparent'}`}
+        className={`fixed inset-x-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-500 ${solid ? 'glass-nav' : 'bg-transparent'}`}
+        style={{ top: 'var(--strip-offset, 0px)' }}
         onMouseLeave={handleMouseLeave}
       >
         <div className="container-xl flex h-[80px] items-center justify-between">
@@ -236,9 +238,11 @@ export default function MegaMenu() {
                   className={`group relative flex h-full items-center gap-1.5 px-5 text-[12.5px] font-semibold uppercase tracking-[0.1em] transition-colors ${activeMenu === item.key ? 'text-white' : 'text-white/75 hover:text-white'}`}
                 >
                   {item.label}
-                  <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-300 ${activeMenu === item.key ? 'rotate-180' : ''}`}>
-                    <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                  </svg>
+                  {megaMenuData[item.key] && (
+                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none" className={`transition-transform duration-300 ${activeMenu === item.key ? 'rotate-180' : ''}`}>
+                      <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                    </svg>
+                  )}
                   <span className={`absolute inset-x-5 bottom-[22px] h-px origin-left bg-grad-brand transition-transform duration-300 ${activeMenu === item.key ? 'scale-x-100' : 'scale-x-0'}`} />
                 </a>
               </div>
@@ -334,6 +338,14 @@ export default function MegaMenu() {
           {/* Accordion */}
           <div ref={mobilePanelRef} className="flex-1 overflow-y-auto px-6">
             {navItems.map((item) => {
+              if (!megaMenuData[item.key]) {
+                return (
+                  <a key={item.key} href={item.href} onClick={() => setMobileOpen(false)} className="mob-row flex items-center justify-between border-b border-white/10 py-5">
+                    <span className="font-display text-[22px] font-semibold tracking-[-0.01em] text-white">{item.label}</span>
+                    <IconArrowRight className="h-4 w-4 text-brand-red" />
+                  </a>
+                )
+              }
               const open = mobileSection === item.key
               const subs = megaMenuData[item.key].columns.flatMap((c) => c.items)
               return (

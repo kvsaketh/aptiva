@@ -11,6 +11,8 @@ import CTASection from '@/components/kit/CTASection'
 import BrandMark from '@/components/BrandMark'
 import { partnerGroups, allPartners, brand } from '@/data/brands'
 import type { Brand } from '@/data/brands'
+import { events, isVideoLive } from '@/data/events'
+import { EventVideo, useNow } from '@/components/events/EventPromos'
 import {
   IconCloud, IconDocument, IconBrain, IconShield, IconServer, IconGlobe,
   IconAward, IconRocket, IconLayers, IconCheckCircle,
@@ -132,6 +134,7 @@ export default function Partners() {
       />
 
       <EcosystemIntro flagship={flagship} />
+      <UiPathPractice />
       <AllianceDomains />
       <PartnerTiers />
       <AllianceValue />
@@ -147,6 +150,26 @@ export default function Partners() {
         secondary={{ label: 'Explore our solutions', href: '#/solutions' }}
       />
     </div>
+  )
+}
+
+/* UiPath practice video: hidden until the video's go-live date (see src/data/events.ts). */
+function UiPathPractice() {
+  const now = useNow()
+  const fusion = events.find((e) => e.id === 'uipath-fusion-dubai-2026')
+  if (!fusion || !isVideoLive(fusion, now)) return null
+  return (
+    <section className="surface-ink-raised relative">
+      <div className="container-xl section-y-sm grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <span className="eyebrow-red">UiPath practice</span>
+          <h2 className="mt-5 font-display text-[clamp(26px,3vw,40px)] font-semibold leading-tight text-white">Agentic automation, delivered in production.</h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-white/65">See how Aptiva's UiPath practice designs, builds and runs automation and AI agents for the region's most regulated institutions.</p>
+          <a href="#/events" className="mt-6 inline-flex text-[12.5px] font-bold uppercase tracking-[0.08em] text-white/70 hover:text-white">Meet us at UiPath FUSION →</a>
+        </div>
+        <EventVideo event={fusion} title="Aptiva UiPath practice and capabilities" />
+      </div>
+    </section>
   )
 }
 

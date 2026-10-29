@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { events } from '@/data/events'
 import PageHeader from '../components/layout/PageHeader'
 import Reveal from '../components/motion/Reveal'
 import SectionHeading from '../components/motion/SectionHeading'
@@ -116,7 +118,10 @@ export default function Contact() {
 /* ────────────── PRIMARY: FORM + CHANNELS ────────────── */
 
 function PrimaryContact() {
-  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', interest: '', message: '' })
+  // "Book a meeting" links arrive as #/contact?event=<id>; pre-fill the message with that event.
+  const [params] = useSearchParams()
+  const ev = events.find((e) => e.id === params.get('event'))
+  const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', interest: '', message: ev ? `I'd like to book a meeting with the Aptiva team at ${ev.name} (${ev.dateLabel}).` : '' })
   const [submitted, setSubmitted] = useState(false)
 
   const field = 'w-full border border-white/12 bg-white/[0.03] px-4 py-3.5 text-[14px] text-white placeholder:text-white/35 outline-none transition-all duration-200 focus:border-brand-red/70 focus:bg-white/[0.05] focus:ring-1 focus:ring-brand-red/30'

@@ -8,6 +8,7 @@ import {
 import ClientLogosMarquee from '../components/ClientLogosMarquee'
 import Hero from '../sections/Hero'
 import StatsBanner from '../sections/StatsBanner'
+import { NextEventCard } from '../components/events/EventPromos'
 import Reveal from '../components/motion/Reveal'
 import SectionHeading from '../components/motion/SectionHeading'
 import { Aurora, GridBackdrop, Grain } from '../components/motion/Atmosphere'
@@ -93,6 +94,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <NextEventCard />
       <StatsBanner />
       <PositioningBand />
       <Capabilities />
