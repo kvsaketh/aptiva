@@ -10,3 +10,13 @@ describe("contact rate limit", () => {
     expect(allowSubmission("1.2.3.4", t + 10 * 60_000 + 10)).toBe(true);
   });
 });
+
+import { enquiryEmail } from "./lib/notify";
+describe("enquiryEmail", () => {
+  it("lists filled fields and keeps the subject on one line", () => {
+    const m = enquiryEmail({ name: "A\r\nBcc: x@y.z", email: "a@b.co", message: "hi", company: "Co" });
+    expect(m.subject).not.toMatch(/[\r\n]/);
+    expect(m.text).toContain("Company: Co");
+    expect(m.text).not.toContain("Phone:");
+  });
+});

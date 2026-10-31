@@ -4,6 +4,7 @@ import { TRPCError } from "@trpc/server";
 import { createRouter, publicQuery, adminQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { enquiries } from "../db/schema";
+import { sendEnquiryAlert } from "./lib/notify";
 
 // shortcut: per-process memory, resets on restart and isn't shared across instances; move to Redis/DB if we run >1 process.
 const recent = new Map<string, number[]>();
@@ -45,6 +46,7 @@ export const contactRouter = createRouter({
         interest: row.interest || null,
         eventId: row.eventId || null,
       });
+      void sendEnquiryAlert(row);
       return { ok: true };
     }),
   list: adminQuery.query(() => getDb().select().from(enquiries).orderBy(desc(enquiries.createdAt)).limit(500)),
