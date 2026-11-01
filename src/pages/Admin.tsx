@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { trpc } from '@/providers/trpc'
+import GalleryAdmin from '@/components/admin/GalleryAdmin'
 
 function TabButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
@@ -19,7 +20,7 @@ function TabButton({ label, active, onClick }: { label: string; active: boolean;
 
 export default function Admin() {
   const { user, isLoading: authLoading } = useAuth()
-  const [tab, setTab] = useState<'enquiries' | 'clients' | 'partners' | 'images'>('enquiries')
+  const [tab, setTab] = useState<'enquiries' | 'gallery' | 'clients' | 'partners' | 'images'>('enquiries')
 
   // Client logos
   const { data: clientLogos, refetch: refetchClients } = trpc.media.clientLogo.listAll.useQuery(undefined, { enabled: tab === 'clients' })
@@ -58,6 +59,7 @@ export default function Admin() {
         {/* Tabs */}
         <div className="flex gap-2 mb-8 border-b border-white/[0.15]">
           <TabButton label="Enquiries" active={tab === 'enquiries'} onClick={() => setTab('enquiries')} />
+          <TabButton label="Gallery" active={tab === 'gallery'} onClick={() => setTab('gallery')} />
           <TabButton label="Client Logos" active={tab === 'clients'} onClick={() => setTab('clients')} />
           <TabButton label="Partner Logos" active={tab === 'partners'} onClick={() => setTab('partners')} />
           <TabButton label="Site Images" active={tab === 'images'} onClick={() => setTab('images')} />
@@ -227,6 +229,8 @@ export default function Admin() {
             </div>
           </div>
         )}
+
+        {tab === 'gallery' && <GalleryAdmin />}
 
         {/* ─── SITE IMAGES TAB ─── */}
         {tab === 'images' && (

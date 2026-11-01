@@ -118,6 +118,7 @@ const megaMenuData: Record<string, MenuDef> = {
           { label: 'Leadership', href: '#/leadership' },
           { label: 'Case Studies', href: '#/case-studies' },
           { label: 'Insights', href: '#/insights' },
+          { label: 'Gallery', href: '#/gallery' },
         ],
       },
       {

@@ -25,6 +25,7 @@ const Insights = lazy(() => import('./pages/Insights'))
 const ArticleDetail = lazy(() => import('./pages/ArticleDetail'))
 const Events = lazy(() => import('./pages/Events'))
 const EventDetail = lazy(() => import('./pages/EventDetail'))
+const Gallery = lazy(() => import('./pages/Gallery'))
 const Leadership = lazy(() => import('./pages/Leadership'))
 const Careers = lazy(() => import('./pages/Careers'))
 const Contact = lazy(() => import('./pages/Contact'))
@@ -62,6 +63,7 @@ export default function App() {
           <Route path="/insights/:slug" element={<ArticleDetail />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />

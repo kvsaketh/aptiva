@@ -33,6 +33,7 @@ const footerLinks = {
     { label: 'Case Studies', href: '#/case-studies' },
     { label: 'Strategic Partners', href: '#/partners' },
     { label: 'Insights', href: '#/insights' },
+    { label: 'Gallery', href: '#/gallery' },
     { label: 'Careers', href: '#/careers' },
   ],
 }

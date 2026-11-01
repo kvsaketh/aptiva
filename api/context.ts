@@ -12,18 +12,18 @@ export type TrpcContext = {
 export async function createContext(
   opts: FetchCreateContextFnOptions,
 ): Promise<TrpcContext> {
-  const ctx: TrpcContext = { req: opts.req, resHeaders: opts.resHeaders };
+  return { req: opts.req, resHeaders: opts.resHeaders, user: await userFromRequest(opts.req) };
+}
 
-  // Authenticate via the Firebase ID token sent as a Bearer header.
-  // Optional — unauthenticated requests just get no ctx.user.
-  const authz = opts.req.headers.get("authorization") ?? "";
-  if (authz.startsWith("Bearer ")) {
-    try {
-      const claims = await verifyFirebaseToken(authz.slice(7));
-      ctx.user = await upsertAndGetUser(claims);
-    } catch (err) {
-      console.warn("[auth] token verification failed:", (err as Error).message);
-    }
+// Authenticate via the Firebase ID token sent as a Bearer header.
+// Optional — unauthenticated requests just get no user.
+export async function userFromRequest(req: Request): Promise<User | undefined> {
+  const authz = req.headers.get("authorization") ?? "";
+  if (!authz.startsWith("Bearer ")) return undefined;
+  try {
+    return await upsertAndGetUser(await verifyFirebaseToken(authz.slice(7)));
+  } catch (err) {
+    console.warn("[auth] token verification failed:", (err as Error).message);
+    return undefined;
   }
-  return ctx;
 }

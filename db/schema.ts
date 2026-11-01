@@ -98,3 +98,18 @@ export const enquiries = mysqlTable("enquiries", {
 });
 
 export type Enquiry = typeof enquiries.$inferSelect;
+
+// ─── GALLERY (photos stored in OCI Object Storage under gallery/<id>/) ───
+export const galleryPhotos = mysqlTable("gallery_photos", {
+  id: serial("id").primaryKey(),
+  album: varchar("album", { length: 150 }).notNull(),
+  caption: varchar("caption", { length: 300 }),
+  prefix: varchar("prefix", { length: 100 }).notNull(), // object key prefix, e.g. gallery/<uuid>
+  originalExt: varchar("original_ext", { length: 10 }).notNull(),
+  width: int("width").notNull(),
+  height: int("height").notNull(),
+  isPublic: boolean("is_public").default(true).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type GalleryPhoto = typeof galleryPhotos.$inferSelect;

@@ -5,6 +5,7 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter } from "./router";
 import { createContext } from "./context";
 import { env } from "./lib/env";
+import { mediaHandler, uploadHandler } from "./gallery-router";
 
 const app = new Hono<{ Bindings: HttpBindings }>();
 
@@ -17,6 +18,8 @@ app.use("/api/trpc/*", async (c) => {
     createContext,
   });
 });
+app.post("/api/gallery/upload", uploadHandler);
+app.get("/media/*", mediaHandler);
 app.all("/api/*", (c) => c.json({ error: "Not Found" }, 404));
 
 export default app;

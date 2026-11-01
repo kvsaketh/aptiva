@@ -6,6 +6,7 @@ import { IconArrowRight, IconArrowUpRight } from '@/components/Icons'
 import { EventVideo, RoleChips, useNow } from '@/components/events/EventPromos'
 import { daysLabel, daysUntil, events, isVideoLive, meetingHref } from '@/data/events'
 import { trpc } from '@/providers/trpc'
+import PhotoGrid from '@/components/gallery/PhotoGrid'
 import NotFound from './NotFound'
 
 export default function EventDetail() {
@@ -13,8 +14,10 @@ export default function EventDetail() {
   const now = useNow()
   const e = events.find((x) => x.id === slug)
   const { data: articles = [] } = trpc.content.articles.useQuery()
+  const { data: allPhotos = [] } = trpc.gallery.list.useQuery()
   if (!e) return <NotFound />
   const related = articles.filter((a) => a.eventId === e.id)
+  const photos = allPhotos.filter((p) => p.album === e.name)
 
   const dated = !!e.start
   const ended = !!e.end && new Date(e.end).getTime() < now
@@ -119,6 +122,19 @@ export default function EventDetail() {
                 <a href={e.url} target="_blank" rel="noopener noreferrer" className="text-[#ff7d8e] hover:text-white">See the event website →</a>
               </p>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* Photos: gallery album named exactly like the event */}
+      {photos.length > 0 && (
+        <section className="surface-ink-raised relative border-t border-white/10">
+          <div className="container-xl section-y-sm">
+            <div className="flex items-baseline justify-between gap-4">
+              <span className="eyebrow-red">Photos</span>
+              <a href="#/gallery" className="text-[13px] text-white/60 hover:text-white">Full gallery →</a>
+            </div>
+            <div className="mt-6"><PhotoGrid photos={photos} /></div>
           </div>
         </section>
       )}
