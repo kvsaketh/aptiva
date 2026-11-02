@@ -1,7 +1,7 @@
 # Firebase Authentication setup
 
 Aptiva uses **Firebase Auth** for the `/login` + `/admin` console: email/password
-(with Firebase-handled verification & reset emails) **and** Google sign-in. The
+only, with no public sign-up. Admins create staff logins in **Admin → Team**. The
 Hono backend verifies the Firebase ID token with `jose` against Google's public
 keys — **no service-account secret or Admin SDK needed**, just the project id.
 
@@ -14,8 +14,8 @@ keys — **no service-account secret or Admin SDK needed**, just the project id.
 
 ## 2. Enable sign-in methods
 **Build → Authentication → Get started → Sign-in method**, then enable:
-- **Email/Password** (toggle on; leave "Email link" off).
-- **Google** (toggle on; pick a support email).
+- **Email/Password** (toggle on; leave "Email link" off). Keep "user account
+  creation" allowed: the Team tab creates logins through it.
 
 ## 3. Register a Web app & copy the config
 1. **Project settings (gear) → General → Your apps → Web (`</>`)**. Register the app.
@@ -30,7 +30,6 @@ keys — **no service-account secret or Admin SDK needed**, just the project id.
 | `storageBucket` | `VITE_FIREBASE_STORAGE_BUCKET` (optional) |
 | `messagingSenderId` | `VITE_FIREBASE_MESSAGING_SENDER_ID` (optional) |
 
-3. Set `OWNER_EMAIL` to the email(s) that should be **admin** (comma-separated).
 
 > `VITE_*` are compiled into the bundle, so set them **before** `npm run build`
 > (re-run `bash deploy/deploy.sh` after changing them).
@@ -38,16 +37,19 @@ keys — **no service-account secret or Admin SDK needed**, just the project id.
 ## 4. Authorize your domain
 **Authentication → Settings → Authorized domains → Add domain** → add your
 production domain (e.g. `aptiva.com`). `localhost` is pre-authorized for dev.
-(Without this, Google sign-in popups are rejected.)
+
 
 ## 5. How roles work
-On every login the backend verifies the token, upserts the user into MySQL, and
-sets `role = admin` if the email is in `OWNER_EMAIL`, else `user`. Change admins
-by editing `OWNER_EMAIL` and re-logging-in — no code or DB edits.
+Roles live in the `users` table, keyed by Firebase uid: `admin` (console + Team
+tab), `staff` (console), `user` (no access). Logging in never changes a role.
+Admins create logins and change access in **Admin → Team**. The very first admin
+is set by hand: create the login in Firebase console → Authentication → Users →
+Add user, sign in once, then run
+`UPDATE users SET role='admin' WHERE email='<email>';`.
 
 ## 6. Verify
 - `https://yourdomain/login` → sign up / sign in / Google all work.
-- An `OWNER_EMAIL` account reaches `/admin`; any other account sees "Admin access only".
+- An admin or staff account reaches `/admin`; any other account is told it has no access.
 - Password reset + verification emails arrive (Firebase sends them).
 
 ## Notes

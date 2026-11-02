@@ -1,14 +1,14 @@
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPopup,
   sendPasswordResetEmail,
-  sendEmailVerification,
   signOut,
   updateProfile,
+  getAuth,
   type User,
 } from 'firebase/auth'
-import { getFirebaseAuth, googleProvider } from './firebase'
+import { initializeApp, deleteApp } from 'firebase/app'
+import { getFirebaseAuth, firebaseConfig } from './firebase'
 
 /** Map Firebase's error codes to friendly messages. */
 export function authErrorMessage(e: unknown): string {
@@ -21,7 +21,6 @@ export function authErrorMessage(e: unknown): string {
     'auth/invalid-credential': 'Incorrect email or password.',
     'auth/email-already-in-use': 'An account with that email already exists.',
     'auth/weak-password': 'Password should be at least 6 characters.',
-    'auth/popup-closed-by-user': 'Sign-in was cancelled.',
     'auth/too-many-requests': 'Too many attempts. Try again later.',
     'auth/operation-not-allowed': 'This sign-in method is not enabled in Firebase.',
     'auth/invalid-api-key': 'Firebase is not configured yet.',
@@ -35,17 +34,20 @@ export async function signInEmail(email: string, password: string) {
   return cred.user
 }
 
-export async function signUpEmail(email: string, password: string, name?: string) {
-  const cred = await createUserWithEmailAndPassword(getFirebaseAuth(), email, password)
-  if (name) await updateProfile(cred.user, { displayName: name })
-  // Fire-and-forget verification email (Firebase handles delivery).
-  void sendEmailVerification(cred.user).catch(() => {})
-  return cred.user
-}
-
-export async function signInGoogle() {
-  const cred = await signInWithPopup(getFirebaseAuth(), googleProvider)
-  return cred.user
+// Creates a staff login from the admin's browser. A separate Firebase app instance
+// is used so the admin stays signed in. Returns the new account's ID token.
+export async function createStaffLogin(email: string, password: string, name?: string) {
+  const app = initializeApp(firebaseConfig, `staff-${Date.now()}`)
+  try {
+    const auth = getAuth(app)
+    const cred = await createUserWithEmailAndPassword(auth, email, password)
+    if (name) await updateProfile(cred.user, { displayName: name })
+    const token = await cred.user.getIdToken(true)
+    await signOut(auth)
+    return token
+  } finally {
+    await deleteApp(app)
+  }
 }
 
 export async function resetPassword(email: string) {

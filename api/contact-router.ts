@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { desc } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
-import { createRouter, publicQuery, adminQuery } from "./middleware";
+import { createRouter, publicQuery, staffQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { enquiries } from "../db/schema";
 import { sendEnquiryAlert } from "./lib/notify";
@@ -49,5 +49,5 @@ export const contactRouter = createRouter({
       void sendEnquiryAlert(row);
       return { ok: true };
     }),
-  list: adminQuery.query(() => getDb().select().from(enquiries).orderBy(desc(enquiries.createdAt)).limit(500)),
+  list: staffQuery.query(() => getDb().select().from(enquiries).orderBy(desc(enquiries.createdAt)).limit(500)),
 });

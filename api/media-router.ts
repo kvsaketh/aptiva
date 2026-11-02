@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { eq, and, asc } from "drizzle-orm";
-import { createRouter, publicQuery, adminQuery } from "./middleware";
+import { createRouter, publicQuery, staffQuery } from "./middleware";
 import { getDb } from "./queries/connection";
 import { clientLogos, partnerLogos, siteImages } from "../db/schema";
 
@@ -13,11 +13,11 @@ export const mediaRouter = createRouter({
         .where(eq(clientLogos.isActive, true))
         .orderBy(asc(clientLogos.displayOrder));
     }),
-    listAll: adminQuery.query(async () => {
+    listAll: staffQuery.query(async () => {
       const db = getDb();
       return db.select().from(clientLogos).orderBy(asc(clientLogos.displayOrder));
     }),
-    create: adminQuery
+    create: staffQuery
       .input(z.object({
         name: z.string().min(1).max(255),
         imageUrl: z.string().min(1).max(500),
@@ -28,7 +28,7 @@ export const mediaRouter = createRouter({
         await db.insert(clientLogos).values({ ...input, isActive: true });
         return { success: true };
       }),
-    update: adminQuery
+    update: staffQuery
       .input(z.object({
         id: z.number(),
         name: z.string().min(1).max(255).optional(),
@@ -42,7 +42,7 @@ export const mediaRouter = createRouter({
         await db.update(clientLogos).set(data).where(eq(clientLogos.id, id));
         return { success: true };
       }),
-    delete: adminQuery
+    delete: staffQuery
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         const db = getDb();
@@ -59,7 +59,7 @@ export const mediaRouter = createRouter({
         .where(eq(partnerLogos.isActive, true))
         .orderBy(asc(partnerLogos.displayOrder));
     }),
-    listAll: adminQuery.query(async () => {
+    listAll: staffQuery.query(async () => {
       const db = getDb();
       return db.select().from(partnerLogos).orderBy(asc(partnerLogos.displayOrder));
     }),
@@ -69,7 +69,7 @@ export const mediaRouter = createRouter({
         .where(and(eq(partnerLogos.isActive, true), eq(partnerLogos.isFeatured, true)))
         .orderBy(asc(partnerLogos.displayOrder));
     }),
-    create: adminQuery
+    create: staffQuery
       .input(z.object({
         name: z.string().min(1).max(255),
         imageUrl: z.string().min(1).max(500),
@@ -84,7 +84,7 @@ export const mediaRouter = createRouter({
         await db.insert(partnerLogos).values({ ...input, isActive: true });
         return { success: true };
       }),
-    update: adminQuery
+    update: staffQuery
       .input(z.object({
         id: z.number(),
         name: z.string().min(1).max(255).optional(),
@@ -102,7 +102,7 @@ export const mediaRouter = createRouter({
         await db.update(partnerLogos).set(data).where(eq(partnerLogos.id, id));
         return { success: true };
       }),
-    delete: adminQuery
+    delete: staffQuery
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         const db = getDb();
@@ -124,7 +124,7 @@ export const mediaRouter = createRouter({
         const rows = await db.select().from(siteImages).where(eq(siteImages.key, input.key));
         return rows[0] || null;
       }),
-    create: adminQuery
+    create: staffQuery
       .input(z.object({
         key: z.string().min(1).max(100),
         name: z.string().min(1).max(255),
@@ -137,7 +137,7 @@ export const mediaRouter = createRouter({
         await db.insert(siteImages).values(input);
         return { success: true };
       }),
-    update: adminQuery
+    update: staffQuery
       .input(z.object({
         id: z.number(),
         key: z.string().min(1).max(100).optional(),
@@ -152,7 +152,7 @@ export const mediaRouter = createRouter({
         await db.update(siteImages).set(data).where(eq(siteImages.id, id));
         return { success: true };
       }),
-    delete: adminQuery
+    delete: staffQuery
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         const db = getDb();

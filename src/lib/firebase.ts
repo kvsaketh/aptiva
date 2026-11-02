@@ -1,12 +1,12 @@
 import { initializeApp, type FirebaseApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, type Auth } from 'firebase/auth'
+import { getAuth, type Auth } from 'firebase/auth'
 
 /**
  * Firebase client. Config comes from VITE_FIREBASE_* env (baked at build time —
  * these keys are public/safe to ship). When unset, auth simply can't sign in;
  * the public marketing site is unaffected.
  */
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
@@ -28,4 +28,3 @@ export function getFirebaseAuth(): Auth {
   return authInstance
 }
 
-export const googleProvider = new GoogleAuthProvider()

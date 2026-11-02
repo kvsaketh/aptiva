@@ -103,7 +103,6 @@ HTTPS is **required**: the app sets `Secure` auth cookies off-localhost.
 |-----|-----------|-----------|
 | `DATABASE_URL` | your MySQL URL from step 4 | always |
 | `FIREBASE_PROJECT_ID` | Firebase project id (backend verifies tokens against it) | `/login` + `/admin` |
-| `OWNER_EMAIL` | comma-separated emails granted the `admin` role | admin access |
 | `VITE_FIREBASE_*` | Firebase web config (apiKey, authDomain, projectId, appId) | `/login` + `/admin`; baked at build |
 
 **The public marketing site works with no Firebase config at all** — only sign-in

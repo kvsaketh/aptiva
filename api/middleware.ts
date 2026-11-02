@@ -40,3 +40,10 @@ function requireRole(role: string) {
 
 export const authedQuery = t.procedure.use(requireAuth);
 export const adminQuery = authedQuery.use(requireRole("admin"));
+
+// Staff and admins can use the console; only admins manage logins.
+export const isConsoleRole = (role?: string) => role === "staff" || role === "admin";
+export const staffQuery = authedQuery.use(t.middleware(({ ctx, next }) => {
+  if (!isConsoleRole(ctx.user?.role)) throw new TRPCError({ code: "FORBIDDEN", message: ErrorMessages.insufficientRole });
+  return next();
+}));

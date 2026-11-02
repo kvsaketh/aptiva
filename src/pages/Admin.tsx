@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { trpc } from '@/providers/trpc'
 import GalleryAdmin from '@/components/admin/GalleryAdmin'
+import TeamAdmin from '@/components/admin/TeamAdmin'
 
 function TabButton({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
@@ -20,7 +21,7 @@ function TabButton({ label, active, onClick }: { label: string; active: boolean;
 
 export default function Admin() {
   const { user, isLoading: authLoading } = useAuth()
-  const [tab, setTab] = useState<'enquiries' | 'gallery' | 'clients' | 'partners' | 'images'>('enquiries')
+  const [tab, setTab] = useState<'enquiries' | 'gallery' | 'clients' | 'partners' | 'images' | 'team'>('enquiries')
 
   // Client logos
   const { data: clientLogos, refetch: refetchClients } = trpc.media.clientLogo.listAll.useQuery(undefined, { enabled: tab === 'clients' })
@@ -43,7 +44,7 @@ export default function Admin() {
 
   if (authLoading) return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>
   if (!user) return <div className="min-h-screen bg-black flex items-center justify-center text-white">Please log in to access admin.</div>
-  if (user.role !== 'admin') return <div className="min-h-screen bg-black flex items-center justify-center text-white">Admin access only.</div>
+  if (user.role !== 'admin' && user.role !== 'staff') return <div className="min-h-screen bg-black flex items-center justify-center text-white text-center px-6">Your login has no console access yet. Ask an Aptiva admin to give you access.</div>
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] pt-[88px]">
@@ -51,7 +52,7 @@ export default function Admin() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <span className="label-red block mb-2">ADMIN PANEL</span>
-            <h1 className="text-white font-bold text-3xl tracking-[-0.02em]">Media Manager</h1>
+            <h1 className="text-white font-bold text-3xl tracking-[-0.02em]">Console</h1>
           </div>
           <span className="text-white text-sm">Logged in as {user.name}</span>
         </div>
@@ -63,6 +64,7 @@ export default function Admin() {
           <TabButton label="Client Logos" active={tab === 'clients'} onClick={() => setTab('clients')} />
           <TabButton label="Partner Logos" active={tab === 'partners'} onClick={() => setTab('partners')} />
           <TabButton label="Site Images" active={tab === 'images'} onClick={() => setTab('images')} />
+          {user.role === 'admin' && <TabButton label="Team" active={tab === 'team'} onClick={() => setTab('team')} />}
         </div>
 
         {/* ─── ENQUIRIES TAB ─── */}
@@ -231,6 +233,7 @@ export default function Admin() {
         )}
 
         {tab === 'gallery' && <GalleryAdmin />}
+        {tab === 'team' && user.role === 'admin' && <TeamAdmin myId={user.id} />}
 
         {/* ─── SITE IMAGES TAB ─── */}
         {tab === 'images' && (

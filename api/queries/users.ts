@@ -2,7 +2,6 @@ import { eq } from "drizzle-orm";
 import * as schema from "@db/schema";
 import type { User } from "@db/schema";
 import { getDb } from "./connection";
-import { env } from "../lib/env";
 import type { FirebaseClaims } from "../auth/firebase";
 
 export async function findUserByUnionId(unionId: string) {
@@ -15,30 +14,23 @@ export async function findUserByUnionId(unionId: string) {
 }
 
 /**
- * Upsert the signed-in Firebase user and return the persisted row. The "admin"
- * role is driven entirely by the OWNER_EMAIL allowlist and re-synced on every
- * login, so granting/revoking admin is just an env change + re-login.
+ * Upsert the signed-in Firebase user and return the persisted row. The role is
+ * never set here: it lives in the DB, keyed by Firebase uid, and only an admin
+ * (Team tab) changes it. Unknown accounts get "user" = no console access.
  */
-// Admin needs a verified email: otherwise anyone could sign up with an admin's address without owning the inbox.
-export function adminRole(claims: Pick<FirebaseClaims, "email" | "emailVerified">, owners: string[]): "admin" | "user" {
-  return claims.email && claims.emailVerified && owners.includes(claims.email.toLowerCase()) ? "admin" : "user";
-}
-
-export async function upsertAndGetUser(claims: FirebaseClaims): Promise<User> {
-  const role = adminRole(claims, env.ownerEmails);
-
+export async function upsertAndGetUser(claims: FirebaseClaims, role?: User["role"]): Promise<User> {
   const fields = {
-    name: claims.name,
+    // Keep a name set by an admin when the token has none.
+    ...(claims.name ? { name: claims.name } : {}),
     email: claims.email,
     avatar: claims.picture,
-    role,
     lastSignInAt: new Date(),
   };
 
   await getDb()
     .insert(schema.users)
-    .values({ unionId: claims.uid, ...fields })
-    .onDuplicateKeyUpdate({ set: fields });
+    .values({ unionId: claims.uid, ...fields, ...(role ? { role } : {}) })
+    .onDuplicateKeyUpdate({ set: { ...fields, ...(role ? { role } : {}) } });
 
   const user = await findUserByUnionId(claims.uid);
   if (!user) throw new Error("Failed to persist user");

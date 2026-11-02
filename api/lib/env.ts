@@ -20,9 +20,4 @@ export const env = {
   // Not "required()" so the public site still boots before auth is configured.
   firebaseProjectId: process.env.FIREBASE_PROJECT_ID ?? "",
 
-  // Comma-separated email allowlist; these accounts get the "admin" role.
-  ownerEmails: (process.env.OWNER_EMAIL ?? "")
-    .split(",")
-    .map((s) => s.trim().toLowerCase())
-    .filter(Boolean),
 };

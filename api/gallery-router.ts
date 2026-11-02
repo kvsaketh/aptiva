@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { desc, eq } from "drizzle-orm";
 import type { Context } from "hono";
-import { createRouter, publicQuery, adminQuery } from "./middleware";
+import { createRouter, publicQuery, staffQuery, isConsoleRole } from "./middleware";
 import { getDb } from "./queries/connection";
 import { galleryPhotos } from "../db/schema";
 import { userFromRequest } from "./context";
@@ -22,9 +22,9 @@ const withUrls = <T extends { prefix: string; originalExt: string }>(rows: T[]) 
 export const galleryRouter = createRouter({
   list: publicQuery.query(async () =>
     withUrls(await getDb().select().from(galleryPhotos).where(eq(galleryPhotos.isPublic, true)).orderBy(desc(galleryPhotos.createdAt)))),
-  listAll: adminQuery.query(async () =>
+  listAll: staffQuery.query(async () =>
     withUrls(await getDb().select().from(galleryPhotos).orderBy(desc(galleryPhotos.createdAt)))),
-  update: adminQuery
+  update: staffQuery
     .input(z.object({
       id: z.number(),
       album: z.string().trim().min(1).max(150).optional(),
@@ -35,7 +35,7 @@ export const galleryRouter = createRouter({
       await getDb().update(galleryPhotos).set(data).where(eq(galleryPhotos.id, id));
       return { ok: true };
     }),
-  delete: adminQuery.input(z.object({ id: z.number() })).mutation(async ({ input }) => {
+  delete: staffQuery.input(z.object({ id: z.number() })).mutation(async ({ input }) => {
     const db = getDb();
     const [p] = await db.select().from(galleryPhotos).where(eq(galleryPhotos.id, input.id));
     if (!p) return { ok: true };
@@ -49,7 +49,7 @@ export const galleryRouter = createRouter({
 // The browser makes web.jpg/thumb.jpg; we only store them.
 export async function uploadHandler(c: Context) {
   const user = await userFromRequest(c.req.raw);
-  if (user?.role !== "admin") return c.json({ error: "Admin only" }, 403);
+  if (!isConsoleRole(user?.role)) return c.json({ error: "Staff only" }, 403);
   if (!storageReady) return c.json({ error: "Photo storage is not configured yet" }, 503);
 
   const form = await c.req.raw.formData();

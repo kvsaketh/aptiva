@@ -3,6 +3,7 @@ import { mediaRouter } from "./media-router";
 import { contentRouter } from "./content-router";
 import { contactRouter } from "./contact-router";
 import { galleryRouter } from "./gallery-router";
+import { teamRouter } from "./team-router";
 import { createRouter, publicQuery } from "./middleware";
 
 export const appRouter = createRouter({
@@ -12,6 +13,7 @@ export const appRouter = createRouter({
   content: contentRouter,
   contact: contactRouter,
   gallery: galleryRouter,
+  team: teamRouter,
 });
 
 export type AppRouter = typeof appRouter;
