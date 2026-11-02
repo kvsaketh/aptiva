@@ -8,7 +8,7 @@ import { env } from "../lib/env";
  * jose caches the JWKS, so this is cheap per request.
  */
 const JWKS = jose.createRemoteJWKSet(
-  new URL("https://www.googleapis.com/service_accounts/v1/jwks/securetoken@system.gserviceaccount.com"),
+  new URL("https://www.googleapis.com/service_accounts/v1/metadata/jwk/securetoken@system.gserviceaccount.com"),
 );
 
 export type FirebaseClaims = {
