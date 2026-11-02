@@ -19,11 +19,13 @@ export async function findUserByUnionId(unionId: string) {
  * role is driven entirely by the OWNER_EMAIL allowlist and re-synced on every
  * login, so granting/revoking admin is just an env change + re-login.
  */
+// Admin needs a verified email: otherwise anyone could sign up with an admin's address without owning the inbox.
+export function adminRole(claims: Pick<FirebaseClaims, "email" | "emailVerified">, owners: string[]): "admin" | "user" {
+  return claims.email && claims.emailVerified && owners.includes(claims.email.toLowerCase()) ? "admin" : "user";
+}
+
 export async function upsertAndGetUser(claims: FirebaseClaims): Promise<User> {
-  const role: "admin" | "user" =
-    claims.email && env.ownerEmails.includes(claims.email.toLowerCase())
-      ? "admin"
-      : "user";
+  const role = adminRole(claims, env.ownerEmails);
 
   const fields = {
     name: claims.name,
